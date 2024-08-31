@@ -1,0 +1,136 @@
+@charset "utf-8";
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.col-1{
+    width: 8.33%;
+}
+
+.col-2{
+    width: 16.66%;
+}
+
+.col-3{
+    width: 25%;
+}
+
+.col-4{
+    width: 33.33%;
+}
+
+.col-5{
+    width: 41.66%;
+}
+
+.col-6{
+    width: 50%;
+}
+
+.col-7{
+    width: 58.33%;
+}
+
+.col-8{
+    width: 66.66;
+}
+
+.col-9{
+    width: 75%;
+}
+
+.col-10{
+    width: 83.33%;
+}
+
+.col-11{
+    width: 91.66%;
+}
+
+.col-12{
+    width: 100%;
+}
+
+#container{
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: rgb(127,0,255);
+    background: linear-gradient(90deg, rgba(127,0,255,0.2329306722689075) 0%, rgba(225,0,255,0.17690826330532217) 100%);
+}
+
+#loginpage{
+    width: 300px;
+    height: auto;
+    background-color: white;
+    box-shadow: 0px 0px 10px #ccc;
+    border-radius: 20px;
+    padding: 50px 25px;
+}
+
+#signup{
+    display: none;
+}
+
+#login h1, #signup h1{
+    font-family: 'Ubuntu',sans-serif;
+}
+
+#login_uname,#login_pwd,#username,#email,#phone,#password{
+    border: none;
+    border-bottom: 1px solid #ccc;
+    padding: 10px;
+    padding-left: 3px;
+    margin-top: 20px;
+    width: 100%;
+    font-size: 15px;
+    font-family: 'Ubuntu',sans-serif;
+    outline: none;
+    color: #727272;
+}
+
+#login_frm{
+    margin-top: 30px;
+}
+
+#signup_frm{
+    margin-top: 10px;
+}
+
+#login_btn,#signup_btn{
+    width: 100%;
+    padding: 10px;
+    border: none;
+    font-size: 15px;
+    background: #7F00FF;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #E100FF, #7F00FF);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #E100FF, #7F00FF); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    color: white;
+    font-family: 'Ubuntu',sans-serif;
+    outline: none;
+    cursor: pointer;
+    margin-top: 30px;
+}
+
+#login p,#signup p{
+    font-family: 'Ubuntu',sans-serif;
+    margin-top: 20px;
+    font-size: 14px;
+    text-align: center;
+}
+
+#login span,#signup span{
+    color: blue;
+    cursor: pointer;
+}
+
+#email_notice, #email_warning ,#password_warning{
+    font-family: 'Ubuntu',sans-serif;
+    color: red;
+    display: none;
+}
