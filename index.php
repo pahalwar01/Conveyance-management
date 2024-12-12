@@ -18,6 +18,12 @@
     
 <script src="java/login.js"></script>
 
+<?php
+
+include 'connection.php';
+
+?>
+
 <!--End External Javascript coding-->
 </body>
 </html>
