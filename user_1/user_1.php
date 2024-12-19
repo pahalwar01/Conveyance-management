@@ -118,7 +118,7 @@
                                     echo "No records found";
                                 }
 
-                                ?>
+                            ?>
                             </table>
                             </center>
 
@@ -282,23 +282,5 @@
   </script>
 
 <script src="js/java.js"></script>
-<script>
-    var kprint = document.getElementById("kjobprint")
-    var lprint = document.getElementById("ljobprint")
-    var dprint = document.getElementById("djobprint")
-    kprint.onclick=function()
-    {
-        window.location.href = "https://docs.google.com/spreadsheets/d/e/2PACX-1vR7woZy9d8HSFhhdTebakHbzs27ZeYZmEpvr85jmyx_d2xb0ddWFGgn8G3-DwZxKHbeRa8nCvCgiGOp/pub?gid=441368016&single=true&output=pdf";
-    }
-    lprint.onclick=function()
-    {
-        window.location.href = "https://docs.google.com/spreadsheets/d/e/2PACX-1vR7woZy9d8HSFhhdTebakHbzs27ZeYZmEpvr85jmyx_d2xb0ddWFGgn8G3-DwZxKHbeRa8nCvCgiGOp/pub?gid=1803733186&single=true&output=pdf";
-    }
-    dprint.onclick=function()
-    {
-        window.location.href = "https://docs.google.com/spreadsheets/d/e/2PACX-1vR7woZy9d8HSFhhdTebakHbzs27ZeYZmEpvr85jmyx_d2xb0ddWFGgn8G3-DwZxKHbeRa8nCvCgiGOp/pub?gid=377967874&single=true&output=pdf";
-    }
-</script>
-<!-- <script src="../../java/googlesignin.js"></script> -->
 </body>
 </html>
