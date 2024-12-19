@@ -1,6 +1,6 @@
 <?php
 
-$servername = "localhost";
+$servername = "http://127.0.0.1/";
 $username = "root";
 $password = "";
 $dbname = "mirchirider";
@@ -13,7 +13,7 @@ if($conn)
 }
 else
 {
-    echo "Connection Failed";
+    echo "Connection Failed:" . mysqli_connect_error();
 }
 
 ?>
