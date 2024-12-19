@@ -1,6 +1,10 @@
 <?php
-include '../../../../connection.php';
+    include '../../../connection.php';
+    error_reporting(0);
 ?>
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -161,7 +165,7 @@ include '../../../../connection.php';
     const userSignOut = async() => {
         signOut(auth).then(() => {
             alert("You have signed out successfully!");
-            location.href = "../../../../index.php";
+            location.href = "../../../../login.php";
             sessionStorage.clear();
         }).catch((error) => {})
     }
@@ -201,7 +205,7 @@ include '../../../../connection.php';
         // location.href = "../../index.html";
         } 
         else {
-        location.href = "../../../../index.php";
+        // location.href = "../../../../login.php";
         signOutButton.style.display = "none";
         message.style.display = "none";
         }
