@@ -1,3 +1,9 @@
+<?php
+    include '../connection.php';
+    error_reporting(0);
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -61,11 +67,7 @@
                     </div>
 <!-- for testing-->
                     <div id="rohit_details">
-                        
-                        <?php
-                        include '../../connection.php';
-                        error_reporting(0);
-                        ?>
+
 
                         <?php
 
