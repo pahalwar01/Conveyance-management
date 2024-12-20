@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 20, 2024 at 07:38 AM
+-- Generation Time: Dec 20, 2024 at 07:40 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -41,9 +41,9 @@ CREATE TABLE `rider` (
 --
 
 CREATE TABLE `rides` (
+  `ride_id` int(10) NOT NULL,
   `rider_id` int(3) NOT NULL,
   `rider_name` date NOT NULL,
-  `ride_id` int(4) NOT NULL,
   `sender name` text NOT NULL,
   `wdate` date NOT NULL,
   `work type` text NOT NULL,
