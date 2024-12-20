@@ -1,9 +1,9 @@
 <?php
 
-$servername = "http://127.0.0.1/";
+$servername = "localhost";
 $username = "root";
 $password = "";
-$dbname = "mirchirider";
+$dbname = "conveyance-management";
 
 $conn = mysqli_connect($servername, $username, $password, $dbname);
 
