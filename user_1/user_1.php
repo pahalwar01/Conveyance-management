@@ -222,7 +222,7 @@
     const userSignOut = async() => {
       signOut(auth).then(() => {
           alert("You have signed out successfully!");
-          location.href = "../../index.php";
+          location.href = "../../login.php";
           sessionStorage.clear();
       }).catch((error) => {})
     }
@@ -256,6 +256,10 @@
                             if(userName.innerHTML == "Mirchi Tasks"){
                                 rohit.style.display = "block";
                             }
+                            else(userName.innerHTML =="")
+                            {
+                                location.href=("../login.php");
+                            }
                         }
                     }
                 }
@@ -265,7 +269,7 @@
         userEmail.innerHTML = user.email;
       }
       else {
-        location.href = "../../index.php";
+        location.href = "../login.php";
         signOutButton.style.display = "none";
         message.style.display = "none";
       }
