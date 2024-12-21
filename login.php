@@ -2,6 +2,30 @@
 include 'connection.php';
 ?>
 
+<?php
+session_start();
+
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    $email = $_POST['email'];
+    $password = $_POST['password'];
+
+    $sql = "SELECT * FROM rider WHERE Email = '$email'";
+    $result = $conn->query($sql);
+
+    if ($result->num_rows > 0) {
+        $rider = $result->fetch_assoc();
+        if (password_verify($password, $rider['password'])) {
+            $_SESSION['RiderID'] = $rider['RiderID']; // Session set karein
+            $_SESSION['Name'] = $rider['Name'];
+            echo "Login successful! Welcome " . $rider['Name'];
+        } else {
+            echo "Invalid password!";
+        }
+    } else {
+        echo "No rider found with this email!";
+    }
+}
+?>
 
 
 
@@ -27,13 +51,13 @@ include 'connection.php';
                 <form id="login_frm" autocomplete="off" method="POST">
                     <input type="text" name="email" placeholder="User Name" id="login_uname" required="required">
                     <small id="email_warning"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i> Your Email ID is not Registered</small>
-                    <input type="password" name="Password" placeholder="Password" id="login_pwd" required="required">
+                    <input type="password" name="password" placeholder="Password" id="login_pwd" required="required">
                     <small id="password_warning"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i> Wrong Password</small>
                     <button type="submit" id="login_btn">Login</button>
                 </form>
-                <!-- <p>Don't have an account? <span id="signup_link">Sign Up</span><br><br></p> -->
+                <p>Don't have an account? <span id="signup_link">Sign Up</span><br><br></p>
             </div>
-            <!-- <div id="signup" class="animate__animated animate__flipInY">
+            <div id="signup" class="animate__animated animate__flipInY">
                 <h1 style="text-align: center;">Sign up</h1>
                 <form id="signup_frm" autocomplete="off">
                     <input type="text" required="required" placeholder="Name" id="username">
@@ -44,7 +68,7 @@ include 'connection.php';
                     <button type="submit" id="signup_btn">Sign up</button>
                 </form>
                 <p>Already have an account? <span id="login_link">Login</span><br><br></p>
-            </div> -->
+            </div>
     
         </div>
 
@@ -52,7 +76,7 @@ include 'connection.php';
 <!--Start External Javascript coding-->
 
 
-<!-- <script src="java/login.js"></script> -->
+<script src="java/login.js"></script>
 
 <!--End External Javascript coding-->
 </body>
