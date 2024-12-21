@@ -13,6 +13,7 @@ if(isset($_POST['email']) && isset($_POST['password']))
     if($row)
     {
         echo "Login Success";
+        header("Location: ../user_1/user_1.php");
     }
     else
     {
