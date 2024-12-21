@@ -21,10 +21,10 @@ include 'connection.php';
         <div id="loginpage">
             <div id="login" class="animate__animated animate__flipInY">
                 <h1 style="text-align: center;">Login</h1>
-                <form id="login_frm" autocomplete="off">
-                    <input type="text" placeholder="User Name" id="login_uname" required="required">
+                <form id="login_frm" autocomplete="off" method="POST">
+                    <input type="text" name="email" placeholder="User Name" id="login_uname" required="required">
                     <small id="email_warning"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i> Your Email ID is not Registered</small>
-                    <input type="password" placeholder="Password" id="login_pwd" required="required">
+                    <input type="password" name="Password" placeholder="Password" id="login_pwd" required="required">
                     <small id="password_warning"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i> Wrong Password</small>
                     <button type="submit" id="login_btn">Login</button>
                 </form>
@@ -48,6 +48,42 @@ include 'connection.php';
     </div>
 <!--Start External Javascript coding-->
     
+<?php
+
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    $email = $_POST['email'];
+    $password = $_POST['Password'];
+
+    $sql = "SELECT * FROM rider WHERE Email = '$email'";
+    $result = $conn->query($sql);
+
+    if ($result->num_rows > 0) {
+        $rider = $result->fetch_assoc();
+        if (password_verify($password, $rider['password'])) {
+            $_SESSION['RiderID'] = $rider['RiderID']; // Session set karein
+            session_start();
+            if (!isset($_SESSION['RiderID'])) {
+                header("Location: user_1/user_1.php"); // Login page par redirect karein
+                exit;
+                }
+            $_SESSION['Name'] = $rider['Name'];
+
+echo "Welcome, " . $_SESSION['Name'] . "!";
+
+            echo "Login successful! Welcome " . $rider['Name'];
+        } else {
+            echo "Invalid password!";
+        }
+    } else {
+        echo "No rider found with this email!";
+    }
+}
+
+?>
+
+
+
+
 <script src="java/login.js"></script>
 
 <!--End External Javascript coding-->
