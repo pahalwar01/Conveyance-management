@@ -3,30 +3,12 @@ include 'connection.php';
 ?>
 
 <?php
-session_start();
-
-if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    $email = $_POST['email'];
-    $password = $_POST['password'];
-
-    $sql = "SELECT * FROM rider WHERE Email = '$email'";
-    $result = $conn->query($sql);
-
-    if ($result->num_rows > 0) {
-        $rider = $result->fetch_assoc();
-        if (password_verify($password, $rider['password'])) {
-            $_SESSION['RiderID'] = $rider['RiderID']; // Session set karein
-            $_SESSION['Name'] = $rider['Name'];
-            echo "Login successful! Welcome " . $rider['Name'];
-        } else {
-            echo "Invalid password!";
-        }
-    } else {
-        echo "No rider found with this email!";
-    }
-}
+include 'codes/signin.php';
 ?>
 
+<?php
+include 'codes/signup.php';
+?>
 
 
 
@@ -59,12 +41,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             </div>
             <div id="signup" class="animate__animated animate__flipInY">
                 <h1 style="text-align: center;">Sign up</h1>
-                <form id="signup_frm" autocomplete="off">
-                    <input type="text" required="required" placeholder="Name" id="username">
-                    <input type="email" required="required" placeholder="Email" id="email">
+                <form id="signup_frm" method="POST" autocomplete="off">
+                    <input type="text" name="name" required="required" placeholder="Name" id="username">
+                    <input type="email" name="email" required="required" placeholder="Email" id="email">
                     <small id="email_notice"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i> Email ID already exist</small>
-                    <input type="number" required="required" placeholder="Phone no." id="phone">
-                    <input type="password" required="required" placeholder="Password" id="password">
+                    <input type="number" name="phone" required="required" placeholder="Phone no." id="phone">
+                    <input type="password" name="password" required="required" placeholder="Password" id="password">
                     <button type="submit" id="signup_btn">Sign up</button>
                 </form>
                 <p>Already have an account? <span id="login_link">Login</span><br><br></p>
