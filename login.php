@@ -3,6 +3,9 @@ include 'connection.php';
 ?>
 
 
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -47,44 +50,9 @@ include 'connection.php';
 
     </div>
 <!--Start External Javascript coding-->
-    
-<?php
-
-if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    $email = $_POST['email'];
-    $password = $_POST['Password'];
-
-    $sql = "SELECT * FROM rider WHERE Email = '$email'";
-    $result = $conn->query($sql);
-
-    if ($result->num_rows > 0) {
-        $rider = $result->fetch_assoc();
-        if (password_verify($password, $rider['password'])) {
-            $_SESSION['RiderID'] = $rider['RiderID']; // Session set karein
-            session_start();
-            if (!isset($_SESSION['RiderID'])) {
-                header("Location: user_1/user_1.php"); // Login page par redirect karein
-                exit;
-                }
-            $_SESSION['Name'] = $rider['Name'];
-
-echo "Welcome, " . $_SESSION['Name'] . "!";
-
-            echo "Login successful! Welcome " . $rider['Name'];
-        } else {
-            echo "Invalid password!";
-        }
-    } else {
-        echo "No rider found with this email!";
-    }
-}
-
-?>
 
 
-
-
-<script src="java/login.js"></script>
+<!-- <script src="java/login.js"></script> -->
 
 <!--End External Javascript coding-->
 </body>
