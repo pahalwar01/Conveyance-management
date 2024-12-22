@@ -2,12 +2,30 @@
 include '../../connection.php';
 ?>
 
+<?php
+// सेशन शुरू करें
+session_start();
+
+$user = $_SESSION['rider_name'];
+
+// यदि यूजर लॉगिन नहीं है, तो उसे लॉगिन पेज पर रिडायरेक्ट करें
+if (!isset($_SESSION['rider_id'])) {
+    header("Location: logout.php");
+    exit();
+}
+
+// डैशबोर्ड कंटेंट
+// echo "<h1>स्वागत है, " . $_SESSION['rider_name'] . "!</h1>";
+// echo "<p>यह आपका डैशबोर्ड है।</p>";
+// echo '<a href="logout.php">लॉगआउट</a>';
+?>
+
 <html>
 <head>
     <title>Rides By Month</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="../css/style.css">
     <link rel="icon" type="image/x-icon" href="../img/logo.png"> 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -15,16 +33,7 @@ include '../../connection.php';
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
-    <style>
-        body
-        {
-            background: #D071f9;
-        }
-        table
-        {
-            background:white;
-        }
-    </style>
+
 </head>
 
 <!--header coding start-->
@@ -44,21 +53,24 @@ include '../../connection.php';
     <div class="row">
         <nav class="col-12">
             <ul>
-                <li class="col-4"><a href="user_1.php"><i class="fas fa-home"></i> Home</a></li>
-                <li class="col-4" id="jobview"><a href="apps/works/works.php"><i class="fas fa-list"></i> Jobs View</a></li>
-                <li class="col-4" id="logout"><a href="#"><p id="logout_text"><i class="fa-solid fa-right-from-bracket"></i> <?php echo '<a href="logout.php">Logout</a>'; ?> </p></a></li>
+                <li class="col-12"><a href="../user_1.php"><i class="fas fa-arrow-left"></i> Back</a></li>
             </ul>
             
         </nav>
     </div>
     <!--Navigation coding end-->
 
-</html>
-
+<section>
+<style>
+        table
+        {
+            background:rgb(115, 238, 167);
+        }
+    </style>
 
 <?php
     if ($_SERVER['REQUEST_METHOD'] == 'GET' && isset($_GET['month']) && isset($_GET['year'])) {
-        session_start();
+        // session_start();
 
         // राइडर की जानकारी सेशन से प्राप्त करें
         $rider_id = $_SESSION['rider_id'];
@@ -77,16 +89,16 @@ include '../../connection.php';
         $result = $stmt->get_result();
 
         if ($result->num_rows > 0) {
-            echo "<h3>राइड्स डेटा ($month-$year):</h3>";
+            echo "<h3>Your Rides DATA For ($month-$year):</h3>";
             echo "<table border='1' cellpadding='10' cellspacing='0'>
                     <tr>
-                        <th>राइड ID</th>
-                        <th>भेजने वाले का नाम</th>
-                        <th>वर्क डेट</th>
-                        <th>काम का प्रकार</th>
-                        <th>शुरुआती स्थान</th>
-                        <th>अंतिम स्थान</th>
-                        <th>किलोमीटर</th>
+                        <th>Ride ID</th>
+                        <th>Sender Name</th>
+                        <th>Work Date</th>
+                        <th>Work Type</th>
+                        <th>Start From</th>
+                        <th>End To</th>
+                        <th>KM.</th>
                     </tr>";
             while ($row = $result->fetch_assoc()) {
                 echo "<tr>
@@ -105,3 +117,6 @@ include '../../connection.php';
         }
     }
     ?>
+
+</section>
+</html>
