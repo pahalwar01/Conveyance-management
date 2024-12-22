@@ -79,9 +79,32 @@ if (!isset($_SESSION['rider_id'])) {
                     <h4>View Section</h4><br>
                     <!-- users view panel -->
 
-                    <div id="rohit_details">
-
-
+                    <div>
+                        <h2>मासिक राइड्स डेटा देखें</h2>
+                            <form action="apps/rides_by_month.php" method="GET">
+                                <label for="month">महीना:</label>
+                                <select id="month" name="month" required>
+                                    <option value="">महीना चुनें</option>
+                                    <option value="01">जनवरी</option>
+                                    <option value="02">फरवरी</option>
+                                    <option value="03">मार्च</option>
+                                    <option value="04">अप्रैल</option>
+                                    <option value="05">मई</option>
+                                    <option value="06">जून</option>
+                                    <option value="07">जुलाई</option>
+                                    <option value="08">अगस्त</option>
+                                    <option value="09">सितंबर</option>
+                                    <option value="10">अक्टूबर</option>
+                                    <option value="11">नवंबर</option>
+                                    <option value="12">दिसंबर</option>
+                                </select>
+                                <br><br>
+                                <label for="year">साल:</label>
+                                <input type="number" id="year" name="year" min="2024" max="2100" required>
+                                <br><br>
+                                <button type="submit">राइड्स देखें</button>
+                            </form>
+                            <hr>
                     </div>
 
                 </div>
