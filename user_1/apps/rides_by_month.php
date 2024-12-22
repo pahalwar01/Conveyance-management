@@ -93,13 +93,50 @@ if (!isset($_SESSION['rider_id'])) {
         if ($result->num_rows > 0) {
             $row = $result->fetch_assoc();
             $total_km = $row['total_km'] ? $row['total_km'] : 0; // अगर डेटा नहीं है, तो 0 दिखाएं
-            echo "<h3>महीना: $month-$year</h3>";
-            echo "<p>आपने कुल $total_km किलोमीटर राइड की है।</p>";
+            echo "<h3 align='center'><mark>Month Details: $month-$year</mark></h3><hr><br>";
+            echo "<h4>Your total KM ride in this month id =<mark> $total_km KM</mark></h4>";
         } else {
             echo "<p>इस महीने की कोई राइड नहीं है।</p>";
         }
     }
     ?>
+
+
+<!-- Total COnveyance per month -->
+
+
+<?php
+    if ($_SERVER['REQUEST_METHOD'] == 'GET' && isset($_GET['month']) && isset($_GET['year'])) {
+        include '../../connection.php';
+
+        // राइडर की जानकारी सेशन से प्राप्त करें
+        $rider_id = $_SESSION['rider_id'];
+
+        // चुना गया महीना और साल
+        $month = $_GET['month'];
+        $year = $_GET['year'];
+
+        // SQL क्वेरी: कुल किलोमीटर प्राप्त करें
+        $sql = "SELECT SUM(km) AS total_km 
+                FROM rides 
+                WHERE rider_id = ? AND MONTH(w_date) = ? AND YEAR(w_date) = ?";
+        $stmt = $conn->prepare($sql);
+        $stmt->bind_param("iss", $rider_id, $month, $year);
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        if ($result->num_rows > 0) {
+            $row = $result->fetch_assoc();
+            $total_km = $row['total_km'] ? $row['total_km'] : 0; // अगर डेटा नहीं है, तो 0 दिखाएं
+            $conveyance = $total_km * 2.5;
+            // echo "<h3>महीना: $month-$year</h3>";
+            echo "<h4>Your this month total conveyance is = <mark>&#8377; $conveyance </mark</h4>";
+        } else {
+            echo "<p>इस महीने की कोई राइड नहीं है।</p>";
+        }
+    }
+    ?>
+
 
 
 
@@ -124,16 +161,16 @@ if (!isset($_SESSION['rider_id'])) {
         $result = $stmt->get_result();
 
         if ($result->num_rows > 0) {
-            echo "<h3>Your Rides DATA For ($month-$year):</h3>";
-            echo "<table border='1' cellpadding='10' cellspacing='0'>
+            echo "<h3 align='center'>Your Rides DATA For <mark>($month-$year)</mark</h3>";
+            echo "<table border='1' cellpadding='10' cellspacing='2' width='100%'>
                     <tr>
-                        <th>Ride ID</th>
-                        <th>Sender Name</th>
-                        <th>Work Date</th>
-                        <th>Work Type</th>
-                        <th>Start From</th>
-                        <th>End To</th>
-                        <th>KM.</th>
+                        <th width='5%'>Ride ID</th>
+                        <th width='18%'>Sender Name</th>
+                        <th width='18%'>Work Date</th>
+                        <th width='18%'>Work Type</th>
+                        <th width='18%'>Start From</th>
+                        <th width='18%'>End To</th>
+                        <th width='5%'>KM.</th>
                     </tr>";
             while ($row = $result->fetch_assoc()) {
                 echo "<tr>
