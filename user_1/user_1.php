@@ -80,7 +80,7 @@ if (!isset($_SESSION['rider_id'])) {
                     <!-- users view panel -->
 
                     <div>
-                        <h2>मासिक राइड्स डेटा देखें</h2>
+                        <h2>View monthly rides data</h2><br>
                             <form action="apps/rides_by_month.php" method="GET">
                                 <label for="month">महीना:</label>
                                 <select id="month" name="month" required>
@@ -102,7 +102,13 @@ if (!isset($_SESSION['rider_id'])) {
                                 <label for="year">साल:</label>
                                 <input type="number" id="year" name="year" min="2024" max="2100" required>
                                 <br><br>
-                                <button type="submit">राइड्स देखें</button>
+                                <button type="submit" style="font-family: 'Ubuntu', sans-serif; 
+                                                        font-size: 20px; 
+                                                        padding: 5px 10px; 
+                                                        margin-top: 15px; 
+                                                        color: white; 
+                                                        background-color: purple; 
+                                                        margin-bottom: 10px;">राइड्स देखें</button>
                             </form>
                             <hr>
                     </div>
