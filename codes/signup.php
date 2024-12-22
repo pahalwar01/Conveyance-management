@@ -8,7 +8,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $phone = $_POST['phone'];
     $password = password_hash($_POST['password'], PASSWORD_BCRYPT); // Hash password
 
-    $sql = "INSERT INTO rider (Name, Email, Phone, Password) VALUES ('$name', '$email', '$phone', '$password')";
+    $sql = "INSERT INTO rider (rider_name, email, phone, password) VALUES ('$name', '$email', '$phone', '$password')";
     if ($conn->query($sql) === TRUE) {
         echo "Registration successful!";
     } else {
