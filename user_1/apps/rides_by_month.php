@@ -10,7 +10,7 @@ $user = $_SESSION['rider_name'];
 
 // यदि यूजर लॉगिन नहीं है, तो उसे लॉगिन पेज पर रिडायरेक्ट करें
 if (!isset($_SESSION['rider_id'])) {
-    header("Location: logout.php");
+    header("Location: ../logout.php");
     exit();
 }
 
