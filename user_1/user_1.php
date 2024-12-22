@@ -78,108 +78,14 @@ if (!isset($_SESSION['rider_id'])) {
                     <br>
                     <h4>View Section</h4><br>
                     <!-- users view panel -->
-                    <div id="dharampal_details" style="display: none;">
-                        <iframe src="https://docs.google.com/spreadsheets/d/e/2PACX-1vR7woZy9d8HSFhhdTebakHbzs27ZeYZmEpvr85jmyx_d2xb0ddWFGgn8G3-DwZxKHbeRa8nCvCgiGOp/pubhtml?gid=686236904&amp;single=true&amp;widget=true&amp;headers=false" style="width: 230px; height: 200px;"></iframe>
-                    </div>
-                    <div id="karan_details" style="display: none;">
-                        <iframe src="https://docs.google.com/spreadsheets/d/e/2PACX-1vR7woZy9d8HSFhhdTebakHbzs27ZeYZmEpvr85jmyx_d2xb0ddWFGgn8G3-DwZxKHbeRa8nCvCgiGOp/pubhtml?gid=1269359666&amp;single=true&amp;widget=true&amp;headers=false" style="width: 230px; height: 200px;"></iframe>
-                    </div>
-                    <div id="lalit_details" style="display: none;">
-                        <iframe src="https://docs.google.com/spreadsheets/d/e/2PACX-1vR7woZy9d8HSFhhdTebakHbzs27ZeYZmEpvr85jmyx_d2xb0ddWFGgn8G3-DwZxKHbeRa8nCvCgiGOp/pubhtml?gid=1767430356&amp;single=true&amp;widget=true&amp;headers=false" style="width: 230px; height: 200px;"></iframe>
-                    </div>
-<!-- for testing-->
+
                     <div id="rohit_details">
 
-
-                        <?php
-
-                        $display =  "SELECT * FROM rides WHERE rider_name = '$user'";
-                        $rides = mysqli_query($conn, $display);
-
-                        $total = mysqli_num_rows($rides);
-
-                        // echo $total;
-
-                        if($total != 0)
-                        {
-                            ?>
-
-                            <h2 align="center"><mark>Displaying All Records</mark></h2>
-                            <center>
-                            <table border="1" cellspacing="5" width="100%">
-                                <tr>
-                                <th width="5%">ID</th>
-                                <th width="10%">Rider Name</th>
-                                <th width="10%">Sender Name</th>
-                                <th width="10%">Date</th>
-                                <th width="15%">Work Type</th>
-                                <th width="20%">From</th>
-                                <th width="15%">To</th>
-                                <th width="10%">Total KM</th>
-                                <th width="15%">Operations</th>
-                                </tr>
-                            
-                            <?php
-                            while ($result = mysqli_fetch_assoc($rides)) 
-                            {
-                                echo "<tr>
-                                        <td>".$result['ride_id']."</td>
-                                        <td>".$result['rider_name']."</td>
-                                        <td>".$result['sender_name']."</td>
-                                        <td>".$result['w_date']."</td>
-                                        <td>".$result['work_type']."</td>
-                                        <td>".$result['start_from']."</td>
-                                        <td>".$result['end_to']."</td>
-                                        <td>".$result['km']."</td>
-
-                                        <td><a href='update_design.php?update_id=$result[id]'>Update</a></td>
-                                    </tr>
-                                    ";
-                            }
-                                }
-                                else
-                                {
-                                    echo "No records found";
-                                }
-
-                            ?>
-                            </table>
-                            </center>
 
                     </div>
 
                 </div>
-                    <!-- admin view panel -->
-                    <div class="row" id="admin" style="display: none;">
-                        <center>
-                            <h2 align ="center" style="height: 50px; text-align: center; color: red;">Riders Details Section</h2>
-                                    <br>
-                                    <div id="dharampal_details">
-                                        <iframe src="https://docs.google.com/spreadsheets/d/e/2PACX-1vR7woZy9d8HSFhhdTebakHbzs27ZeYZmEpvr85jmyx_d2xb0ddWFGgn8G3-DwZxKHbeRa8nCvCgiGOp/pubhtml?gid=686236904&amp;single=true&amp;widget=true&amp;headers=false" style="width: 230px; height: 200px;"></iframe>
-                                        <br>
-                                        <button style="height: 30px; width: 80px; color: red; background-color: yellow;" id="djobprint"><i class="fa-solid fa-print" style="color: red;"></i> Print</button>
-                                    </div><br><br>
-                                    <div id="karan_details">
-                                        <iframe src="https://docs.google.com/spreadsheets/d/e/2PACX-1vR7woZy9d8HSFhhdTebakHbzs27ZeYZmEpvr85jmyx_d2xb0ddWFGgn8G3-DwZxKHbeRa8nCvCgiGOp/pubhtml?gid=1269359666&amp;single=true&amp;widget=true&amp;headers=false" style="width: 230px; height: 200px;"></iframe>
-                                        <br>
-                                        <button style="height: 30px; width: 80px; color: red; background-color: yellow;" id="kjobprint"><i class="fa-solid fa-print" style="color: red;"></i> Print</button>
-                                    </div><br><br>
-                                    <div id="lalit_details">
-                                        <iframe src="https://docs.google.com/spreadsheets/d/e/2PACX-1vR7woZy9d8HSFhhdTebakHbzs27ZeYZmEpvr85jmyx_d2xb0ddWFGgn8G3-DwZxKHbeRa8nCvCgiGOp/pubhtml?gid=1767430356&amp;single=true&amp;widget=true&amp;headers=false" style="width: 230px; height: 200px;"></iframe>
-                                        <br>
-                                        <button style="height: 30px; width: 80px; color: red; background-color: yellow;" id="ljobprint"><i class="fa-solid fa-print" style="color: red;"></i> Print</button>
-                                    </div>
-                                <br><br>
-                                <hr style="color: red;border-style: dashed; border-width: 2px;"><hr>
-                                <br>
-                        </center>
-                        <br><br><br>
-                    </div>
-                    
-                    <div class="main">
-            
-                    </div>
-                        
+
             </center>
             <br><br><br>
         </div>
