@@ -10,6 +10,24 @@ $result = mysqli_fetch_assoc($rides);
 ?>
 
 <?php
+// सेशन शुरू करें
+session_start();
+
+$user = $_SESSION['rider_name'];
+
+// यदि यूजर लॉगिन नहीं है, तो उसे लॉगिन पेज पर रिडायरेक्ट करें
+if (!isset($_SESSION['rider_id'])) {
+    header("Location: logout.php");
+    exit();
+}
+
+// डैशबोर्ड कंटेंट
+// echo "<h1>स्वागत है, " . $_SESSION['rider_name'] . "!</h1>";
+// echo "<p>यह आपका डैशबोर्ड है।</p>";
+// echo '<a href="logout.php">लॉगआउट</a>';
+?>
+
+<?php
 if(isset($_POST['update']))
 {
     $rname  =$_POST['rname'];
