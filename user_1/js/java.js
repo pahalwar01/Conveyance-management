@@ -45,7 +45,7 @@
 //     sessionStorage.clear();
 //     var logout_text = document.getElementById("logout_text");
 //     logout_text.innerHTML = "Please wait...";
-//     setTimeout(function(){window.location = "../../index.html"},2000);
+//     setTimeout(function(){window.location = "../login.php"},2000);
 //     this.ariaDisabled.backbtn;
 // }
 
