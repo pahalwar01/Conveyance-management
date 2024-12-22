@@ -15,13 +15,13 @@
 </html>
 
 <?php
-include '../../../connection.php';
+include '../../connection.php';
 error_reporting(0);
 ?>
 
 <?php
 
-$display =  "SELECT * FROM data";
+$display =  "SELECT * FROM rides Where rider_name = '$user'";
 $rides = mysqli_query($conn, $display);
 
 $total = mysqli_num_rows($rides);
@@ -51,13 +51,13 @@ if($total != 0)
     while ($result = mysqli_fetch_assoc($rides)) 
     {
         echo "<tr>
-                <td>".$result['id']."</td>
-                <td>".$result['rname']."</td>
-                <td>".$result['sender']."</td>
-                <td>".$result['wdate']."</td>
-                <td>".$result['work']."</td>
-                <td>".$result['startfrom']."</td>
-                <td>".$result['endto']."</td>
+                <td>".$result['ride_id']."</td>
+                <td>".$result['rider_name']."</td>
+                <td>".$result['sender_name']."</td>
+                <td>".$result['w_date']."</td>
+                <td>".$result['work_type']."</td>
+                <td>".$result['start_from']."</td>
+                <td>".$result['end_to']."</td>
                 <td>".$result['km']."</td>
 
                 <td><a href='update_design.php?update_id=$result[id]'>Update</a></td>
