@@ -1,7 +1,21 @@
-create file index.html for login page then coding for user login / admin login
-link all necessery links like css and java
-create launch home page for customers
 
-For Xampp server launch in Ubuntu:-
-sudo /opt/lampp/./manager-linux-x64.run
+Infinityfree acc-
+
+Password 
+AtVxzdsZRZ2
+
+rohitmirchi.free.nf
+
+MySQL DB Name
+if0_37965540_conveyance
+
+MySQL User Name
+if0_37965540
+
+
+MySQL Password
+(Your vPanel Password)
+
+MySQL Host Name
+sql204.infinityfree.com
 
