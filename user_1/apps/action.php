@@ -69,7 +69,6 @@ if(isset($_POST['submit']))
     $to         =$_POST['endto'];
     $km         =$_POST['km'];
 
-    //DHARAMPAL DATA SEPRATE
 
     if($rname=="$user"){
         $query="INSERT INTO rides values ('$ride_id','$rider_id','$rname','$sname','$date','$work','$from','$to','$km')";
