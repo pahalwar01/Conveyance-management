@@ -86,7 +86,7 @@ if (!isset($_SESSION['rider_id'])) {
 
                     <h2 align="center"><mark>Displaying All Records</mark></h2>
                     <center>
-                    <table border="1" cellspacing="5" width="100%">
+                    <table border="1" cellspacing="2" width="100%">
                         <tr>
                         <th width="5%">ID</th>
                         <th width="10%">Rider Name</th>
@@ -111,8 +111,7 @@ if (!isset($_SESSION['rider_id'])) {
                                 <td>".$result['start_from']."</td>
                                 <td>".$result['end_to']."</td>
                                 <td>".$result['km']."</td>
-
-                                <td><a href='update_design.php?update_id=$result[id]'>Update</a></td>
+                                <td><a href='../update_design.php?update_id=$result[ride_id]'>Update</a></td>
                             </tr>
                             ";
                     }
