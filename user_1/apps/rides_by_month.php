@@ -68,6 +68,41 @@ if (!isset($_SESSION['rider_id'])) {
         }
     </style>
 
+<!-- Total KM factor  -->
+
+<?php
+    if ($_SERVER['REQUEST_METHOD'] == 'GET' && isset($_GET['month']) && isset($_GET['year'])) {
+        include '../../connection.php';
+
+        // राइडर की जानकारी सेशन से प्राप्त करें
+        $rider_id = $_SESSION['rider_id'];
+
+        // चुना गया महीना और साल
+        $month = $_GET['month'];
+        $year = $_GET['year'];
+
+        // SQL क्वेरी: कुल किलोमीटर प्राप्त करें
+        $sql = "SELECT SUM(km) AS total_km 
+                FROM rides 
+                WHERE rider_id = ? AND MONTH(w_date) = ? AND YEAR(w_date) = ?";
+        $stmt = $conn->prepare($sql);
+        $stmt->bind_param("iss", $rider_id, $month, $year);
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        if ($result->num_rows > 0) {
+            $row = $result->fetch_assoc();
+            $total_km = $row['total_km'] ? $row['total_km'] : 0; // अगर डेटा नहीं है, तो 0 दिखाएं
+            echo "<h3>महीना: $month-$year</h3>";
+            echo "<p>आपने कुल $total_km किलोमीटर राइड की है।</p>";
+        } else {
+            echo "<p>इस महीने की कोई राइड नहीं है।</p>";
+        }
+    }
+    ?>
+
+
+
 <?php
     if ($_SERVER['REQUEST_METHOD'] == 'GET' && isset($_GET['month']) && isset($_GET['year'])) {
         // session_start();
