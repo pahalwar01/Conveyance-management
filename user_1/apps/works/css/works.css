@@ -54,6 +54,12 @@
     width: 100%;
 }
 
+section{
+    height: fit-content;
+    background: rgb(127,0,255);
+    background: linear-gradient(90deg, rgba(127,0,255,0.2329306722689075) 0%, rgba(225,0,255,0.17690826330532217) 100%);
+}
+
 /* mobile responsive start*/
 
 @media only screen and (max-width: 576px)
@@ -150,7 +156,7 @@ li{
     font-family: 'Ubuntu' , sans-serif;
 }
 
-#ridername ,#s_name ,#date ,#work_type ,#frm ,#to ,#total_km{
+#riderid ,#ridername ,#s_name ,#date ,#work_type ,#frm ,#to ,#total_km{
     width: 100%;
     padding: 10px;
     font-family: 'Ubuntu', sans-serif;
