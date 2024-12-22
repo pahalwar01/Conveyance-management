@@ -3,6 +3,28 @@
     error_reporting(0);
 ?>
 
+<?php
+    include '../codes/signin.php';
+?>
+
+<?php
+// सेशन शुरू करें
+session_start();
+
+$user = $_SESSION['rider_name'];
+
+// यदि यूजर लॉगिन नहीं है, तो उसे लॉगिन पेज पर रिडायरेक्ट करें
+if (!isset($_SESSION['rider_id'])) {
+    header("Location: logout.php");
+    exit();
+}
+
+// डैशबोर्ड कंटेंट
+// echo "<h1>स्वागत है, " . $_SESSION['rider_name'] . "!</h1>";
+// echo "<p>यह आपका डैशबोर्ड है।</p>";
+// echo '<a href="logout.php">लॉगआउट</a>';
+?>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -28,7 +50,7 @@
                 <img src="../../img/logo.png" alt="logo" id="logo">
             </div>
             
-            <h2><center style="height: 50px; text-align: center; color: red;"><span id="profile_name"></span></center></h2>
+            <h2><center style="height: 50px; text-align: center; color: red;"><span id="profile_name"><?php echo "<h4>Welcome " . $_SESSION['rider_name'] . "!</h4>"; ?></span></center></h2>
             
         </header>    
     </div>
@@ -40,7 +62,7 @@
             <ul>
                 <li class="col-4"><a href="user_1.php"><i class="fas fa-home"></i> Home</a></li>
                 <li class="col-4" id="jobview"><a href="apps/works/works.php"><i class="fas fa-list"></i> Jobs View</a></li>
-                <li class="col-4" id="logout"><a href="#"><p id="logout_text"><i class="fa-solid fa-right-from-bracket"></i> Logout </p></a></li>
+                <li class="col-4" id="logout"><a href="#"><p id="logout_text"><i class="fa-solid fa-right-from-bracket"></i> <?php echo '<a href="logout.php">Logout</a>'; ?> </p></a></li>
             </ul>
             
         </nav>
@@ -71,7 +93,7 @@
 
                         <?php
 
-                        $display =  "SELECT * FROM data";
+                        $display =  "SELECT * FROM rides WHERE rider_name = '$user'";
                         $rides = mysqli_query($conn, $display);
 
                         $total = mysqli_num_rows($rides);
@@ -101,13 +123,13 @@
                             while ($result = mysqli_fetch_assoc($rides)) 
                             {
                                 echo "<tr>
-                                        <td>".$result['id']."</td>
-                                        <td>".$result['rname']."</td>
-                                        <td>".$result['sender']."</td>
-                                        <td>".$result['wdate']."</td>
-                                        <td>".$result['work']."</td>
-                                        <td>".$result['startfrom']."</td>
-                                        <td>".$result['endto']."</td>
+                                        <td>".$result['ride_id']."</td>
+                                        <td>".$result['rider_name']."</td>
+                                        <td>".$result['sender_name']."</td>
+                                        <td>".$result['w_date']."</td>
+                                        <td>".$result['work_type']."</td>
+                                        <td>".$result['start_from']."</td>
+                                        <td>".$result['end_to']."</td>
                                         <td>".$result['km']."</td>
 
                                         <td><a href='update_design.php?update_id=$result[id]'>Update</a></td>
@@ -164,128 +186,6 @@
         
     </section>
 
-
-<script type="module">
-  
-    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.0.0/firebase-app.js";
-   
-  
-    import { getAuth, GoogleAuthProvider, signInWithPopup, signOut, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.0.0/firebase-auth.js";
-    
-   // For Firebase JS SDK v7.20.0 and later, measurementId is optional
-  const firebaseConfig = {
-    apiKey: "AIzaSyDXIbUIbKYmKVPUtfrzCPAxLb2t4r_Jlww",
-    authDomain: "account-f83b4.firebaseapp.com",
-    databaseURL: "https://account-f83b4-default-rtdb.firebaseio.com",
-    projectId: "account-f83b4",
-    storageBucket: "account-f83b4.appspot.com",
-    messagingSenderId: "374695878902",
-    appId: "1:374695878902:web:72ea054fbd780f98650cd7",
-    measurementId: "G-D0XY2VX61J"
-  };
-  
-  
-  
-    const app = initializeApp(firebaseConfig);
-    const auth = getAuth();
-    const provider = new GoogleAuthProvider()
-  
-    const signInButton = document.getElementById("signInButton");
-    const signOutButton = document.getElementById("logout");
-    const message = document.getElementById("message");
-    const userName = document.getElementById("profile_name");
-    const userEmail = document.getElementById("userEmail");
-    const riderdetails = document.getElementById("riderdetails");
-    const dharampal = document.getElementById("dharampal_details");
-    const karan = document.getElementById("karan_details");
-    const lalit = document.getElementById("lalit_details");
-    const rohit = document.getElementById("rohit_details");
-    const admin = document.getElementById("admin");
-    const rider = document.getElementById("rider");
-    const jobview = document.getElementById("jobview");
-    const logout = document.getElementById("logout");
-    
-    // signOutButton.style.display = "none";
-    // message.style.display = "none";
-  
-    const userSignIn = async() => {
-      signInWithPopup(auth, provider)
-      .then((result) => {
-          const user = result.user
-          console.log(user);
-      }).catch((error) => {
-          const errorCode = error.code;
-          const errorMessage = error.message
-      })
-    }
-  
-    const userSignOut = async() => {
-      signOut(auth).then(() => {
-          alert("You have signed out successfully!");
-          location.href = "../../login.php";
-          sessionStorage.clear();
-      }).catch((error) => {})
-    }
-  
-    onAuthStateChanged(auth, (user) => {
-      if(user) {
-        signOutButton.style.display = "block";
-        // message.style.display = "block";
-        riderdetails.innerHTML = user.displayName;
-        userName.innerHTML = user.displayName;
-        if(userName.innerHTML == "Dharam Pal"){
-                dharampal.style.display = "block";
-            }
-            else{
-                if(userName.innerHTML == "karan kumar"){
-                    karan.style.display = "block";
-                }
-                else{
-                    if(userName.innerHTML == "Lalit Kumar"){
-                    lalit.style.display = "block";
-                    }
-                    else{
-                        if(userName.innerHTML == "Rohit kumar"){
-                            admin.style.display = "block";
-                            // location.href=("../admin/admin.html")
-                            rider.style.display="none";
-                            jobview.style.display="none";
-                            logout.style.float="right";
-                        }
-                        else{
-                            if(userName.innerHTML == "Mirchi Tasks"){
-                                rohit.style.display = "block";
-                            }
-                            else(userName.innerHTML =="")
-                            {
-                                location.href=("../login.php");
-                            }
-                        }
-                    }
-                }
-            }
-
-
-        userEmail.innerHTML = user.email;
-      }
-      else {
-        location.href = "../login.php";
-        signOutButton.style.display = "none";
-        message.style.display = "none";
-      }
-    })
-
-
-
-    
-
-
-
-
-    signOutButton.addEventListener('click', userSignOut);
-  
-
-  </script>
 
 <script src="js/java.js"></script>
 </body>
