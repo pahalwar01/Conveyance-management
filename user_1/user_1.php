@@ -26,6 +26,9 @@ if (!isset($_SESSION['rider_id'])) {
 ?>
 
 
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
