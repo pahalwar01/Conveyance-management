@@ -89,7 +89,7 @@ if (!isset($_SESSION['rider_id'])) {
                     <table border="1" cellspacing=".01" width="100%">
                         <tr>
                         <th width="5%">ID</th>
-                        <th width="10%">Rider Name</th>
+                        <th width="10%" style="display:none;">Rider Name</th>
                         <th width="10%">Sender Name</th>
                         <th width="10%">Date</th>
                         <th width="15%">Work Type</th>
@@ -103,14 +103,14 @@ if (!isset($_SESSION['rider_id'])) {
                     {
                         echo "<tr style='text-align: center;color: black;'>
                                 <td>".$result['ride_id']."</td>
-                                <td>".$result['rider_name']."</td>
+                                <td style='display: none;'>".$result['rider_name']."</td>
                                 <td>".$result['sender_name']."</td>
                                 <td>".$result['w_date']."</td>
                                 <td>".$result['work_type']."</td>
                                 <td>".$result['start_from']."</td>
                                 <td>".$result['end_to']."</td>
                                 <td>".$result['km']."</td>
-                                <td style='background: black;''><a href='../update_design.php?update_id=$result[ride_id]'>Update</a></td>
+                                <td style='background: black;'><a href='../update_design.php?update_id=$result[ride_id]'>Update</a></td>
                             </tr>
                             ";
                     }
