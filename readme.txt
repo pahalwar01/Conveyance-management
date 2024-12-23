@@ -19,3 +19,6 @@ MySQL Password
 MySQL Host Name
 sql204.infinityfree.com
 
+FTP hostname
+ftpupload.net
+
