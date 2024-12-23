@@ -33,7 +33,7 @@ $result = $conn->query($sql);
         <?php while ($row = $result->fetch_assoc()) { ?>
             <tr>
                 <td><?php echo $row['rider_id']; ?></td>
-                <td><?php echo $row['name']; ?></td>
+                <td><?php echo $row['rider_name']; ?></td>
                 <td><?php echo $row['email']; ?></td>
                 <td><?php echo $row['phone']; ?></td>
                 <td>
