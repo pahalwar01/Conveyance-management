@@ -6,8 +6,6 @@ include 'connection.php';
 include 'codes/signin.php';
 ?>
 
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -25,7 +23,8 @@ include 'codes/signin.php';
     <div id="container">
         <div id="loginpage">
             <div id="login" class="animate__animated animate__flipInY">
-                <h1 style="text-align: center;">Login</h1>
+                <h1 style="text-align: center;">User Login</h1>
+                <!-- <form id="login_frm" autocomplete="off" method="POST"> -->
                 <form id="login_frm" autocomplete="off" method="POST">
                     <input type="text" name="email" placeholder="User Name" id="login_uname" required="required">
                     <small id="email_warning"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i> Your Email ID is not Registered</small>
@@ -34,6 +33,7 @@ include 'codes/signin.php';
                     <button type="submit" id="login_btn">Login</button>
                 </form>
                 <!-- <p>Don't have an account? <span id="signup_link">Sign Up</span><br><br></p> -->
+                 <br><br>
             </div>
             <!-- <div id="signup" class="animate__animated animate__flipInY">
                 <h1 style="text-align: center;">Sign up</h1>
