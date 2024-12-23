@@ -11,7 +11,7 @@ $user = $_SESSION['rider_name'];
 
 // यदि यूजर लॉगिन नहीं है, तो उसे लॉगिन पेज पर रिडायरेक्ट करें
 if (!isset($_SESSION['rider_id'])) {
-    header("Location: logout.php");
+    header("Location: ../../logout.php");
     exit();
 }
 
@@ -93,10 +93,10 @@ if (!isset($_SESSION['rider_id'])) {
                         <th width="10%">Sender Name</th>
                         <th width="10%">Date</th>
                         <th width="15%">Work Type</th>
-                        <th width="20%">From</th>
+                        <th width="15%">From</th>
                         <th width="15%">To</th>
-                        <th width="10%">Total KM</th>
-                        <th width="15%">Operations</th>
+                        <th width="10%">KM</th>
+                        <th width="10%">Update</th>
                         </tr>
                     
                     <?php
