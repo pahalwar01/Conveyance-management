@@ -88,7 +88,7 @@ if (!isset($_SESSION['rider_id'])) {
                     <center>
                     <table border="1" cellspacing=".01" width="100%">
                         <tr>
-                        <th width="5%">ID</th>
+                        <th width="5%" style="display:none;">ID</th>
                         <th width="10%" style="display:none;">Rider Name</th>
                         <th width="10%">Sender Name</th>
                         <th width="10%">Date</th>
@@ -102,7 +102,7 @@ if (!isset($_SESSION['rider_id'])) {
                     while ($result = mysqli_fetch_assoc($rides)) 
                     {
                         echo "<tr style='text-align: center;color: black;'>
-                                <td>".$result['ride_id']."</td>
+                                <td style='display: none;'>".$result['ride_id']."</td>
                                 <td style='display: none;'>".$result['rider_name']."</td>
                                 <td>".$result['sender_name']."</td>
                                 <td>".$result['w_date']."</td>
