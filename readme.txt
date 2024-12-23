@@ -9,8 +9,7 @@ rohitmirchi.free.nf
 MySQL DB Name
 if0_37965540_conveyance
 
-MySQL User Name
-if0_37965540
+
 
 
 MySQL Password
@@ -22,3 +21,8 @@ sql204.infinityfree.com
 FTP hostname
 ftpupload.net
 
+MySQL User Name
+if0_37965540
+
+Password 
+AtVxzdsZRZ2
