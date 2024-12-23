@@ -26,7 +26,7 @@ if (!isset($_SESSION['rider_id'])) {
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=100%, initial-scale=1.0">
     <title>Jobs</title>
     <link rel="stylesheet" href="css/works.css">
     <link rel="icon" type="image/x-icon" href="../../../../img/logo.png"> 
@@ -86,7 +86,7 @@ if (!isset($_SESSION['rider_id'])) {
 
                     <h2 align="center"><mark>Displaying All Records</mark></h2>
                     <center>
-                    <table border="1" cellspacing="2" width="100%">
+                    <table border="1" cellspacing=".01" width="100%">
                         <tr>
                         <th width="5%">ID</th>
                         <th width="10%">Rider Name</th>
@@ -98,11 +98,10 @@ if (!isset($_SESSION['rider_id'])) {
                         <th width="10%">KM</th>
                         <th width="10%">Update</th>
                         </tr>
-                    
                     <?php
                     while ($result = mysqli_fetch_assoc($rides)) 
                     {
-                        echo "<tr>
+                        echo "<tr style='text-align: center;color: black;'>
                                 <td>".$result['ride_id']."</td>
                                 <td>".$result['rider_name']."</td>
                                 <td>".$result['sender_name']."</td>
@@ -111,7 +110,7 @@ if (!isset($_SESSION['rider_id'])) {
                                 <td>".$result['start_from']."</td>
                                 <td>".$result['end_to']."</td>
                                 <td>".$result['km']."</td>
-                                <td><a href='../update_design.php?update_id=$result[ride_id]'>Update</a></td>
+                                <td style='background: black;''><a href='../update_design.php?update_id=$result[ride_id]'>Update</a></td>
                             </tr>
                             ";
                     }
