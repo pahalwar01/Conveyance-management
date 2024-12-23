@@ -33,7 +33,7 @@ include 'codes/signin.php';
                     <button type="submit" id="login_btn">Login</button>
                 </form>
                 <!-- <p>Don't have an account? <span id="signup_link">Sign Up</span><br><br></p> -->
-                <p>Don't have an account? <span id="signup_link"><a href="admin_login.php">Admin Login</a></span><br><br></p>
+                <p>Don't have an account? <span id="signup_link">Sign UP</span><br><br></p>
                  <br><br>
             </div>
             <!-- <div id="signup" class="animate__animated animate__flipInY">
