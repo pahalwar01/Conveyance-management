@@ -10,7 +10,7 @@ $user = $_SESSION['rider_name'];
 
 // यदि यूजर लॉगिन नहीं है, तो उसे लॉगिन पेज पर रिडायरेक्ट करें
 if (!isset($_SESSION['rider_id'])) {
-    header("Location: logout.php");
+    header("Location: ../logout.php");
     exit();
 }
 
@@ -26,7 +26,7 @@ if (!isset($_SESSION['rider_id'])) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../css/style.css">
-    <link rel="icon" type="image/x-icon" href="../img/logo.png"> 
+    <link rel="icon" type="image/x-icon" href="../../img/logo.png"> 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap" rel="stylesheet">
@@ -68,6 +68,78 @@ if (!isset($_SESSION['rider_id'])) {
         }
     </style>
 
+<!-- Total KM factor  -->
+
+<?php
+    if ($_SERVER['REQUEST_METHOD'] == 'GET' && isset($_GET['month']) && isset($_GET['year'])) {
+        include '../../connection.php';
+
+        // राइडर की जानकारी सेशन से प्राप्त करें
+        $rider_id = $_SESSION['rider_id'];
+
+        // चुना गया महीना और साल
+        $month = $_GET['month'];
+        $year = $_GET['year'];
+
+        // SQL क्वेरी: कुल किलोमीटर प्राप्त करें
+        $sql = "SELECT SUM(km) AS total_km 
+                FROM rides 
+                WHERE rider_id = ? AND MONTH(w_date) = ? AND YEAR(w_date) = ?";
+        $stmt = $conn->prepare($sql);
+        $stmt->bind_param("iss", $rider_id, $month, $year);
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        if ($result->num_rows > 0) {
+            $row = $result->fetch_assoc();
+            $total_km = $row['total_km'] ? $row['total_km'] : 0; // अगर डेटा नहीं है, तो 0 दिखाएं
+            echo "<h3 align='center'><mark>Month Details: $month-$year</mark></h3><hr><br>";
+            echo "<h4>Your total KM ride in this month id =<mark> $total_km KM</mark></h4>";
+        } else {
+            echo "<p>इस महीने की कोई राइड नहीं है।</p>";
+        }
+    }
+    ?>
+
+
+<!-- Total COnveyance per month -->
+
+
+<?php
+    if ($_SERVER['REQUEST_METHOD'] == 'GET' && isset($_GET['month']) && isset($_GET['year'])) {
+        include '../../connection.php';
+
+        // राइडर की जानकारी सेशन से प्राप्त करें
+        $rider_id = $_SESSION['rider_id'];
+
+        // चुना गया महीना और साल
+        $month = $_GET['month'];
+        $year = $_GET['year'];
+
+        // SQL क्वेरी: कुल किलोमीटर प्राप्त करें
+        $sql = "SELECT SUM(km) AS total_km 
+                FROM rides 
+                WHERE rider_id = ? AND MONTH(w_date) = ? AND YEAR(w_date) = ?";
+        $stmt = $conn->prepare($sql);
+        $stmt->bind_param("iss", $rider_id, $month, $year);
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        if ($result->num_rows > 0) {
+            $row = $result->fetch_assoc();
+            $total_km = $row['total_km'] ? $row['total_km'] : 0; // अगर डेटा नहीं है, तो 0 दिखाएं
+            $conveyance = $total_km * 2.5;
+            // echo "<h3>महीना: $month-$year</h3>";
+            echo "<h4>Your this month total conveyance is = <mark>&#8377; $conveyance </mark</h4>";
+        } else {
+            echo "<p>इस महीने की कोई राइड नहीं है।</p>";
+        }
+    }
+    ?>
+
+
+
+
 <?php
     if ($_SERVER['REQUEST_METHOD'] == 'GET' && isset($_GET['month']) && isset($_GET['year'])) {
         // session_start();
@@ -89,16 +161,16 @@ if (!isset($_SESSION['rider_id'])) {
         $result = $stmt->get_result();
 
         if ($result->num_rows > 0) {
-            echo "<h3>Your Rides DATA For ($month-$year):</h3>";
-            echo "<table border='1' cellpadding='10' cellspacing='0'>
+            echo "<h3 align='center'>Your Rides DATA For <mark>($month-$year)</mark</h3>";
+            echo "<table border='1' cellpadding='10' cellspacing='2' width='100%'>
                     <tr>
-                        <th>Ride ID</th>
-                        <th>Sender Name</th>
-                        <th>Work Date</th>
-                        <th>Work Type</th>
-                        <th>Start From</th>
-                        <th>End To</th>
-                        <th>KM.</th>
+                        <th width='5%'>Ride ID</th>
+                        <th width='18%'>Sender Name</th>
+                        <th width='18%'>Work Date</th>
+                        <th width='18%'>Work Type</th>
+                        <th width='18%'>Start From</th>
+                        <th width='18%'>End To</th>
+                        <th width='5%'>KM.</th>
                     </tr>";
             while ($row = $result->fetch_assoc()) {
                 echo "<tr>
