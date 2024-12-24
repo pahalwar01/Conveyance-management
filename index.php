@@ -31,9 +31,9 @@ include 'codes/signin.php';
                     <input type="password" name="password" placeholder="Password" id="login_pwd" required="required">
                     <small id="password_warning"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i> Wrong Password</small>
                     <button type="submit" id="login_btn">Login</button>
-                </form>
+                </form><br><br>
                 <!-- <p>Don't have an account? <span id="signup_link">Sign Up</span><br><br></p> -->
-                <p>Don't have an account? <span id="signup_link">Sign UP</span><br><br></p>
+                <a href="admin_login.php"><center><span id="signup_link">Admin Panel</span></center><br><br></a>
                  <br><br>
             </div>
             <!-- <div id="signup" class="animate__animated animate__flipInY">
