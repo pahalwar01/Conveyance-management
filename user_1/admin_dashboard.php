@@ -46,5 +46,6 @@ $result = $conn->query($sql);
 
     <h2>राइड्स प्रबंधन</h2>
     <a href="view_rides.php">सभी राइड्स देखें</a>
+
 </body>
 </html>
