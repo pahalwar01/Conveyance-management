@@ -3,8 +3,9 @@ include 'connection.php';
 ?>
 
 <?php
-include 'codes/signin.php';
+include 'codes/admin_signin.php';
 ?>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -13,6 +14,7 @@ include 'codes/signin.php';
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
     <link rel="stylesheet" href="css/adminstyle.css">
+    <link rel="icon" type="image/x-icon" href="img/logo.png"> 
     <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap" rel="stylesheet">
@@ -33,13 +35,23 @@ include 'codes/signin.php';
                     <button type="submit" id="login_btn">Login</button>
                 </form><br><br>
                 <a href="index.php"><center><span id="signup_link">User Panel</span></center></a>
-                 <br><br>
+                <!-- <p>Don't have an account? <span id="signup_link">Sign Up</span><br><br></p> -->
             </div>
+            <!-- <div id="signup" class="animate__animated animate__flipInY">
+                <h1 style="text-align: center;">Sign up</h1>
+                <form id="signup_frm" method="POST" autocomplete="off">
+                    <input type="text" name="name" required="required" placeholder="Name" id="username">
+                    <input type="email" name="email" required="required" placeholder="Email" id="email">
+                    <small id="email_notice"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i> Email ID already exist</small>
+                    <input type="number" name="phone" required="required" placeholder="Phone no." id="phone">
+                    <input type="password" name="password" required="required" placeholder="Password" id="password">
+                    <button type="submit" id="signup_btn">Sign up</button>
+                </form>
+                <p>Already have an account? <span id="login_link">Login</span><br><br></p>
+            </div> -->
         </div>
 
     </div>
-<!--Start External Javascript coding-->
-
 
 <script>
     var login_link = document.getElementById("login_link");
@@ -60,6 +72,5 @@ include 'codes/signin.php';
     }
 </script>
 
-<!--End External Javascript coding-->
 </body>
 </html>
