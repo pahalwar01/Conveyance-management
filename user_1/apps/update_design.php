@@ -1,5 +1,5 @@
 <?php
-include '../../connection.php';
+include '../../connection/connection.php';
 $id = $_GET['update_id'];
 
 $display =  "SELECT * FROM rides where ride_id='$id'";
