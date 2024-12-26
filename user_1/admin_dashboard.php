@@ -1,5 +1,5 @@
 <?php
-include '../connection.php';
+include '../connection/connection.php';
 
 // Fetch all riders
 $sql = "SELECT * FROM rider";
