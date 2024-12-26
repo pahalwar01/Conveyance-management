@@ -1,5 +1,5 @@
 <?php
-    include '../connection.php';
+    include '../connection/connection.php';
     error_reporting(0);
 ?>
 
