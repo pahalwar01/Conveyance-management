@@ -32,10 +32,10 @@ include 'codes/signin.php';
                     <small id="password_warning"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i> Wrong Password</small>
                     <button type="submit" id="login_btn">Login</button>
                 </form><br><br>
+                <a href="admin_login.php"><center><span id="#">Admin Panel</span></center></a>
                 <!-- <p>Don't have an account? <span id="signup_link">Sign Up</span><br><br></p> -->
-                <a href="admin_login.php"><center><span id="signup_link">Admin Panel</span></center></a>
             </div>
-            <div id="signup" class="animate__animated animate__flipInY">
+            <!-- <div id="signup" class="animate__animated animate__flipInY">
                 <h1 style="text-align: center;">Sign up</h1>
                 <form id="signup_frm" method="POST" autocomplete="off">
                     <input type="text" name="name" required="required" placeholder="Name" id="username">
@@ -46,7 +46,7 @@ include 'codes/signin.php';
                     <button type="submit" id="signup_btn">Sign up</button>
                 </form>
                 <p>Already have an account? <span id="login_link">Login</span><br><br></p>
-            </div>
+            </div> -->
     
         </div>
 
