@@ -3,7 +3,7 @@ include 'connection/connection.php';
 ?>
 
 <?php
-include 'codes/admin_signup.php';
+include 'codes/admin_signin.php';
 ?>
 
 
@@ -27,18 +27,18 @@ include 'codes/admin_signup.php';
             <div id="login" class="animate__animated animate__flipInY">
                 <h1 style="text-align: center;">Admin Login</h1>
                 <!-- <form id="login_frm" autocomplete="off" method="POST"> -->
-                <!-- <form id="login_frm" autocomplete="off" method="POST"> -->
+                <form id="login_frm" autocomplete="off" method="POST">
                     <input type="text" name="email" placeholder="User Name" id="login_uname" required="required">
                     <small id="email_warning"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i> Your Email ID is not Registered</small>
                     <input type="password" name="password" placeholder="Password" id="login_pwd" required="required">
                     <small id="password_warning"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i> Wrong Password</small>
                     <button type="submit" id="login_btn">Login</button>
-                </form><br><br>
+                </form><br>
+                <!--<p>Don't have an account? <span id="signup_link">Sign Up</span><br><br></p>-->
                 <a href="index.php"><center><span id="#">User Panel</span></center></a>
-                <p>Don't have an account? <span id="signup_link">Sign Up</span><br><br></p>
             </div>
-            <div id="signup" class="animate__animated animate__flipInY">
-                <h1 style="text-align: center;">Admin Sign up</h1>
+            <!--<div id="signup" class="animate__animated animate__flipInY">
+                <h1 style="text-align: center;">Sign up</h1>
                 <form id="signup_frm" method="POST" autocomplete="off">
                     <input type="text" name="name" required="required" placeholder="Name" id="username">
                     <input type="email" name="email" required="required" placeholder="Email" id="email">
@@ -48,7 +48,7 @@ include 'codes/admin_signup.php';
                     <button type="submit" id="signup_btn">Sign up</button>
                 </form>
                 <p>Already have an account? <span id="login_link">Login</span><br><br></p>
-            </div>
+            </div>-->
         </div>
 
     </div>
