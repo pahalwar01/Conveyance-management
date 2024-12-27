@@ -1,0 +1,23 @@
+@charset "utf-8";
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+#add_rider_btn{
+    width: 50%;
+    padding: 10px;
+    border: none;
+    font-size: 15px;
+    background: #37dd0d;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #E100FF, #7F00FF);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #24be10, #92c914); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    color: white;
+    font-family: 'Ubuntu',sans-serif;
+    outline: none;
+    cursor: pointer;
+    margin-top: 30px;
+}
