@@ -69,12 +69,13 @@ if (!isset($_SESSION['admin_id'])) {
     <!--Navigation coding end-->
 
 
-    <h1>Admin Dashboard</h1>
-    <h2>List of Riders</h2><br>
+    <h1 align="center">Admin Dashboard</h1>
+    <h2 align="center">List of Riders</h2><br>
 
     <!-- Add Rider Button -->
+     <center>
     <button id="add_rider_btn"><a href="add_rider.php" style="color: green; text-decoration: none;">Add New Rider Manually</a></button>
-    <br><br>
+    <br><br></center>
 
     <!-- Riders Table -->
      <center>
@@ -100,9 +101,5 @@ if (!isset($_SESSION['admin_id'])) {
         <?php } ?>
     </table>
     </center>
-
-    <h2>राइड्स प्रबंधन</h2>
-    <a href="view_rides.php">सभी राइड्स देखें</a>
-
 </body>
 </html>
