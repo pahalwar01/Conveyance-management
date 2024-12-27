@@ -32,7 +32,8 @@ if (!isset($_SESSION['admin_id'])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin Dashboard</title>
     <link rel="stylesheet" href="css/style.css">
-    <link rel="icon" type="image/x-icon" href="../../img/logo.png"> 
+    <link rel="stylesheet" href="css/admin_dashboard.css">
+    <link rel="icon" type="image/x-icon" href="../img/logo.png"> 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap" rel="stylesheet">
@@ -69,34 +70,36 @@ if (!isset($_SESSION['admin_id'])) {
 
 
     <h1>Admin Dashboard</h1>
-    <h2>List of Riders</h2>
+    <h2>List of Riders</h2><br>
 
     <!-- Add Rider Button -->
-    <a href="add_rider.php">नया राइडर जोड़ें</a>
+    <button id="add_rider_btn"><a href="add_rider.php" style="color: green; text-decoration: none;">Add New Rider Manually</a></button>
     <br><br>
 
     <!-- Riders Table -->
+     <center>
     <table border="1" cellpadding="10" cellspacing="0">
         <tr>
-            <th>राइडर ID</th>
-            <th>नाम</th>
-            <th>Email</th>
-            <th>Phone</th>
-            <th>Action</th>
+            <th width="5%">Rider ID</th>
+            <th width="20%">Rider Name</th>
+            <th width="40%">Rider Email</th>
+            <th width="25%">Rider Phone</th>
+            <!-- <th width="10%">Update</th> -->
         </tr>
         <?php while ($row = $result->fetch_assoc()) { ?>
-            <tr>
+            <tr align="center">
                 <td><?php echo $row['rider_id']; ?></td>
                 <td><?php echo $row['rider_name']; ?></td>
                 <td><?php echo $row['email']; ?></td>
                 <td><?php echo $row['phone']; ?></td>
-                <td>
+                <!-- <td>
                     <a href="edit_rider.php?rider_id=<?php echo $row['rider_id']; ?>">Edit</a> | 
                     <a href="delete_rider.php?rider_id=<?php echo $row['rider_id']; ?>" onclick="return confirm('क्या आप वाकई इसे हटाना चाहते हैं?')">Delete</a>
-                </td>
+                </td> -->
             </tr>
         <?php } ?>
     </table>
+    </center>
 
     <h2>राइड्स प्रबंधन</h2>
     <a href="view_rides.php">सभी राइड्स देखें</a>
