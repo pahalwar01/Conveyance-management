@@ -11,7 +11,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $stmt->execute();
     $result = $stmt->get_result();
     $user = $result->fetch_assoc();
-    $riderid = "SELECT rider_id FROM rider WHERE rider_name = '$user'"; ;
+    $riderid = "SELECT rider_id FROM rider WHERE rider_name = '$user'";
 
     if ($result->num_rows > 0) {
         $user = $result->fetch_assoc();
@@ -71,7 +71,7 @@ if(isset($_POST['submit']))
 
 
     if($rname=="$user"){
-        $query="INSERT INTO rides values ('$ride_id','$rider_id','$rname','$sname','$date','$work','$from','$to','$km')";
+        $query="INSERT INTO rides (rider_id, rider_name, sender_name, w_date, work_type, start_from, end_to, km) VALUES ('$rider_id','$rname','$sname','$date','$work','$from','$to','$km')";
     $send=mysqli_query($conn,$query);
 
     if($send)
