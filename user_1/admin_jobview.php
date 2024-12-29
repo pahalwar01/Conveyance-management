@@ -39,17 +39,6 @@ if (!isset($_SESSION['admin_id'])) {
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
-    <!-- <style>
-        body
-        {
-            background: #D071f9;
-        }
-        table
-        {
-            background:white;
-        }
-    </style> -->
-
 </head>
 <body>
 
@@ -88,7 +77,16 @@ if (!isset($_SESSION['admin_id'])) {
 
                     <div>
                         <h2>View Monthly Rider Data</h2><br>
-                            <form action="apps/rides_by_month.php" method="GET">
+                            <form action="apps/admin_rides_by_month.php" method="GET">
+                                <label for="name">Rider Name</label>
+                                <select name="rider" id="rider">
+                                    <option value="<?php 'SELECT * FROM rider WHERE rider_id = 1' ?>"></option>
+                                    <option value="<?php 'SELECT * FROM rider WHERE rider_id = 2' ?>"></option>
+                                    <option value="<?php 'SELECT * FROM rider WHERE rider_id = 3' ?>"></option>
+                                    <option value="<?php 'SELECT * FROM rider WHERE rider_id = 4' ?>"></option>
+                                    <option value="<?php 'SELECT * FROM rider WHERE rider_id = 5' ?>"></option>
+                                    <option value="<?php 'SELECT * FROM rider WHERE rider_id = 6' ?>"></option>
+                                </select>
                                 <label for="month">Month:</label>
                                 <select id="month" name="month" required>
                                     <option value="">Select Month</option>
@@ -107,7 +105,7 @@ if (!isset($_SESSION['admin_id'])) {
                                 </select>
                                 <br><br>
                                 <label for="year">Year:</label>
-                                <input type="number" id="year" name="year" min="2025" max="2030" required>
+                                <input type="number" id="year" name="year" min="2024" max="2030" required>
                                 <br><br>
                                 <button type="submit" style="font-family: 'Ubuntu', sans-serif; 
                                                         font-size: 20px; 
