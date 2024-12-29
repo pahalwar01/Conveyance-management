@@ -74,7 +74,7 @@
 }
 
 #signup{
-    display: none;
+    display: block;
 }
 
 #login h1, #signup h1{
