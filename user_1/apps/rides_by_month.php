@@ -43,7 +43,7 @@ if (!isset($_SESSION['rider_id'])) {
                 <img src="../../img/logo.png" alt="logo" id="logo">
             </div>
             
-            <h2><center style="height: 50px; text-align: center; color: red;"><span id="profile_name"><?php echo "<h4>Welcome " . $_SESSION['rider_name'] . "!</h4>"; ?></span></center></h2>
+            <h2><center style="height: 50px; text-align: center; color: red;"><span id="profile_name"><?php echo $_SESSION['rider_name'] . "!</h4>"; ?></span></center></h2>
             
         </header>    
     </div>
@@ -59,6 +59,14 @@ if (!isset($_SESSION['rider_id'])) {
         </nav>
     </div>
     <!--Navigation coding end-->
+    <!-- <button onclick="window.print()" 
+    style="font-family: 'Ubuntu', sans-serif; 
+                        font-size: 20px; 
+                        padding: 5px 10px; 
+                        margin-top: 15px; 
+                        color: white; 
+                        background-color: purple; 
+                        margin-bottom: 10px;">Print</button> -->
 
 <section>
 <style>
@@ -94,7 +102,7 @@ if (!isset($_SESSION['rider_id'])) {
             $row = $result->fetch_assoc();
             $total_km = $row['total_km'] ? $row['total_km'] : 0; // अगर डेटा नहीं है, तो 0 दिखाएं
             echo "<h3 align='center'><mark>Month Details: $month-$year</mark></h3><hr><br>";
-            echo "<h4>Your total KM ride in this month id =<mark> $total_km KM</mark></h4>";
+            echo "<h4>Total KM in this month is =<mark> $total_km KM</mark></h4>";
         } else {
             echo "<p>इस महीने की कोई राइड नहीं है।</p>";
         }
@@ -130,7 +138,7 @@ if (!isset($_SESSION['rider_id'])) {
             $total_km = $row['total_km'] ? $row['total_km'] : 0; // अगर डेटा नहीं है, तो 0 दिखाएं
             $conveyance = $total_km * 2.5;
             // echo "<h3>महीना: $month-$year</h3>";
-            echo "<h4>Your this month total conveyance is = <mark>&#8377; $conveyance </mark</h4>";
+            echo "<h4>Total conveyance is = <mark>&#8377; $conveyance </mark</h4>";
         } else {
             echo "<p>इस महीने की कोई राइड नहीं है।</p>";
         }
