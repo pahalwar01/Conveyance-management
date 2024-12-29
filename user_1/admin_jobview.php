@@ -7,7 +7,6 @@ $result = $conn->query($sql);
 ?>
 
 
-
 <?php
 session_start();
 
@@ -78,6 +77,8 @@ if (!isset($_SESSION['admin_id'])) {
                     <div>
                         <h2>View Monthly Rider Data</h2><br>
                             <form action="apps/admin_rides_by_month.php" method="GET">
+                                <label for="rider_id">Rider ID:</label>
+                                <input type="text" id="rider"><br><br>
                                 <label for="month">Month:</label>
                                 <select id="month" name="month" required>
                                     <option value="">Select Month</option>
@@ -114,7 +115,6 @@ if (!isset($_SESSION['admin_id'])) {
             </center>
             <br><br><br>
         </div>
-     
 </body>
 </html>
 
