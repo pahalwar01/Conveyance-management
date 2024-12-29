@@ -78,15 +78,6 @@ if (!isset($_SESSION['admin_id'])) {
                     <div>
                         <h2>View Monthly Rider Data</h2><br>
                             <form action="apps/admin_rides_by_month.php" method="GET">
-                                <label for="name">Rider Name</label>
-                                <select name="rider" id="rider">
-                                    <option value="<?php 'SELECT * FROM rider WHERE rider_id = 1' ?>"></option>
-                                    <option value="<?php 'SELECT * FROM rider WHERE rider_id = 2' ?>"></option>
-                                    <option value="<?php 'SELECT * FROM rider WHERE rider_id = 3' ?>"></option>
-                                    <option value="<?php 'SELECT * FROM rider WHERE rider_id = 4' ?>"></option>
-                                    <option value="<?php 'SELECT * FROM rider WHERE rider_id = 5' ?>"></option>
-                                    <option value="<?php 'SELECT * FROM rider WHERE rider_id = 6' ?>"></option>
-                                </select>
                                 <label for="month">Month:</label>
                                 <select id="month" name="month" required>
                                     <option value="">Select Month</option>
