@@ -103,7 +103,7 @@ if (!isset($_SESSION['rider_id'])) {
                                 </select>
                                 <br><br>
                                 <label for="year">साल:</label>
-                                <input type="number" id="year" name="year" min="2024" max="2100" required>
+                                <input type="number" id="year" name="year" min="2025" max="2030" required>
                                 <br><br>
                                 <button type="submit" style="font-family: 'Ubuntu', sans-serif; 
                                                         font-size: 20px; 
