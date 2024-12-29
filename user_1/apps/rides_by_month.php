@@ -72,7 +72,7 @@ if (!isset($_SESSION['rider_id'])) {
 
 <?php
     if ($_SERVER['REQUEST_METHOD'] == 'GET' && isset($_GET['month']) && isset($_GET['year'])) {
-        include '../../connection.php';
+        include '../../connection/connection.php';
 
         // राइडर की जानकारी सेशन से प्राप्त करें
         $rider_id = $_SESSION['rider_id'];
@@ -107,7 +107,7 @@ if (!isset($_SESSION['rider_id'])) {
 
 <?php
     if ($_SERVER['REQUEST_METHOD'] == 'GET' && isset($_GET['month']) && isset($_GET['year'])) {
-        include '../../connection.php';
+        include '../../connection/connection.php';
 
         // राइडर की जानकारी सेशन से प्राप्त करें
         $rider_id = $_SESSION['rider_id'];
