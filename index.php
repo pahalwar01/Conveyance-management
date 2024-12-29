@@ -24,55 +24,18 @@ include 'codes/signin.php';
         <div id="loginpage">
             <div id="login" class="animate__animated animate__flipInY">
                 <h1 style="text-align: center;">User Login</h1>
-                <!-- <form id="login_frm" autocomplete="off" method="POST"> -->
                 <form id="login_frm" autocomplete="off" method="POST">
-                    <input type="text" name="email" placeholder="User Name" id="login_uname" required="required">
+                    <input type="text" name="email" placeholder="User Email" id="login_uname" required="required">
                     <small id="email_warning"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i> Your Email ID is not Registered</small>
                     <input type="password" name="password" placeholder="Password" id="login_pwd" required="required">
                     <small id="password_warning"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i> Wrong Password</small>
                     <button type="submit" id="login_btn">Login</button>
                 </form><br>
-                <!--<p>Don't have an account? <span id="signup_link">Sign Up</span><br><br></p>-->
+                <p>Don't have an account? <span id="signup_link"><a href="user_signup.php">Sign Up</a></span><br><br></p>
                 <a href="admin_login.php"><center><span id="#">Admin Panel</span></center></a>
             </div>
-            <!--<div id="signup" class="animate__animated animate__flipInY">
-                <h1 style="text-align: center;">Sign up</h1>
-                <form id="signup_frm" method="POST" autocomplete="off">
-                    <input type="text" name="name" required="required" placeholder="Name" id="username">
-                    <input type="email" name="email" required="required" placeholder="Email" id="email">
-                    <small id="email_notice"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i> Email ID already exist</small>
-                    <input type="number" name="phone" required="required" placeholder="Phone no." id="phone">
-                    <input type="password" name="password" required="required" placeholder="Password" id="password">
-                    <button type="submit" id="signup_btn">Sign up</button>
-                </form>
-                <p>Already have an account? <span id="login_link">Login</span><br><br></p>
-            </div>-->
-    
         </div>
 
     </div>
-<!--Start External Javascript coding-->
-
-
-<script>
-    var login_link = document.getElementById("login_link");
-    var signup_link = document.getElementById("signup_link");
-    var signup_box = document.getElementById("signup");
-    var login_box = document.getElementById("login");
-        
-    login_link.onclick = function()
-    {
-        signup_box.style.display = "none";
-        login_box.style.display = "block";
-    }
-
-    signup_link.onclick = function()
-    {
-        login_box.style.display = "none";
-        signup_box.style.display = "block";
-    }
-</script>
-
-<!--End External Javascript coding-->
 </body>
 </html>
