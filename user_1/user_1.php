@@ -77,41 +77,44 @@ if (!isset($_SESSION['rider_id'])) {
         <div class="row">
             <center>
                 <div id="rider">
-                    <h2 align ="center" style="height: 50px; text-align: center; color: red;">Your Ride Details <span id="riderdetails"></span></h2>
-                    <br>
-                    <h4>View Section</h4><br>
                     <!-- users view panel -->
 
                     <div>
                         <h2>View monthly rides data</h2><br>
                             <form action="apps/rides_by_month.php" method="GET">
-                                <label for="month">महीना:</label>
+                                <label for="month">Month:</label>
                                 <select id="month" name="month" required>
-                                    <option value="">महीना चुनें</option>
-                                    <option value="01">जनवरी</option>
-                                    <option value="02">फरवरी</option>
-                                    <option value="03">मार्च</option>
-                                    <option value="04">अप्रैल</option>
-                                    <option value="05">मई</option>
-                                    <option value="06">जून</option>
-                                    <option value="07">जुलाई</option>
-                                    <option value="08">अगस्त</option>
-                                    <option value="09">सितंबर</option>
-                                    <option value="10">अक्टूबर</option>
-                                    <option value="11">नवंबर</option>
-                                    <option value="12">दिसंबर</option>
+                                    <option value="">Select Month</option>
+                                    <option value="01">January</option>
+                                    <option value="02">February</option>
+                                    <option value="03">March</option>
+                                    <option value="04">April</option>
+                                    <option value="05">May</option>
+                                    <option value="06">June</option>
+                                    <option value="07">July</option>
+                                    <option value="08">August</option>
+                                    <option value="09">September</option>
+                                    <option value="10">October</option>
+                                    <option value="11">November</option>
+                                    <option value="12">December</option>
                                 </select>
-                                <br><br>
+                                <br>
                                 <label for="year">साल:</label>
+                                <!-- <select id="month" name="month" required>
+                                    <option value="">Select Year</option>
+                                    <option value="01">2025</option>
+                                    <option value="02">2025</option>
+                                    <option value="03">2026</option>
+                                </select> -->
                                 <input type="number" id="year" name="year" min="2024" max="2030" required>
-                                <br><br>
+                                <br>
                                 <button type="submit" style="font-family: 'Ubuntu', sans-serif; 
                                                         font-size: 20px; 
                                                         padding: 5px 10px; 
                                                         margin-top: 15px; 
                                                         color: white; 
                                                         background-color: purple; 
-                                                        margin-bottom: 10px;">राइड्स देखें</button>
+                                                        margin-bottom: 10px;">Show Rides</button>
                             </form>
                             <hr>
                     </div>
