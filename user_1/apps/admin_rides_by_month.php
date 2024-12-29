@@ -1,6 +1,10 @@
 <?php
 include '../../connection/connection.php';
+// Fetch all riders
+$sql = "SELECT * FROM rider";
+$result = $conn->query($sql);
 ?>
+
 
 <?php
 session_start();
@@ -42,7 +46,7 @@ if (!isset($_SESSION['admin_id'])) {
                 <img src="../../img/logo.png" alt="logo" id="logo">
             </div>
             
-            <h2><center style="height: 50px; text-align: center; color: red;"><span id="profile_name"><?php echo "<h4>Welcome " . $_SESSION['rider_name'] . "!</h4>"; ?></span></center></h2>
+            <h2><center style="height: 50px; text-align: center; color: red;"><span id="profile_name"><?php echo "<h4>Welcome " . $_SESSION['admin_name'] . "!</h4>"; ?></span></center></h2>
             
         </header>    
     </div>
@@ -70,11 +74,8 @@ if (!isset($_SESSION['admin_id'])) {
 <!-- Total KM factor  -->
 
 <?php
-    if ($_SERVER['REQUEST_METHOD'] == 'GET' && isset($_GET['month']) && isset($_GET['year'])) {
-        include '../../connection.php';
+    if ($_SERVER['REQUEST_METHOD'] == 'GET' && isset($_GET['rider']) && isset($_GET['month']) && isset($_GET['year'])) {
 
-        // राइडर की जानकारी सेशन से प्राप्त करें
-        $rider_id = $_SESSION['rider_id'];
 
         // चुना गया महीना और साल
         $month = $_GET['month'];
@@ -83,7 +84,7 @@ if (!isset($_SESSION['admin_id'])) {
         // SQL क्वेरी: कुल किलोमीटर प्राप्त करें
         $sql = "SELECT SUM(km) AS total_km 
                 FROM rides 
-                WHERE rider_id = ? AND MONTH(w_date) = ? AND YEAR(w_date) = ?";
+                WHERE rider_name = ? AND MONTH(w_date) = ? AND YEAR(w_date) = ?";
         $stmt = $conn->prepare($sql);
         $stmt->bind_param("iss", $rider_id, $month, $year);
         $stmt->execute();
@@ -105,20 +106,17 @@ if (!isset($_SESSION['admin_id'])) {
 
 
 <?php
-    if ($_SERVER['REQUEST_METHOD'] == 'GET' && isset($_GET['month']) && isset($_GET['year'])) {
-        include '../../connection.php';
-
-        // राइडर की जानकारी सेशन से प्राप्त करें
-        $rider_id = $_SESSION['rider_id'];
+    if ($_SERVER['REQUEST_METHOD'] == 'GET' && isset($_GET['rider']) && isset($_GET['month']) && isset($_GET['year'])) {
 
         // चुना गया महीना और साल
+        $rider = $_GET['rider'];
         $month = $_GET['month'];
         $year = $_GET['year'];
 
         // SQL क्वेरी: कुल किलोमीटर प्राप्त करें
         $sql = "SELECT SUM(km) AS total_km 
                 FROM rides 
-                WHERE rider_id = ? AND MONTH(w_date) = ? AND YEAR(w_date) = ?";
+                WHERE rider_name = ? AND MONTH(w_date) = ? AND YEAR(w_date) = ?";
         $stmt = $conn->prepare($sql);
         $stmt->bind_param("iss", $rider_id, $month, $year);
         $stmt->execute();
@@ -140,20 +138,19 @@ if (!isset($_SESSION['admin_id'])) {
 
 
 <?php
-    if ($_SERVER['REQUEST_METHOD'] == 'GET' && isset($_GET['month']) && isset($_GET['year'])) {
+    if ($_SERVER['REQUEST_METHOD'] == 'GET' && isset($_GET['rider']) && isset($_GET['month']) && isset($_GET['year'])) {
         // session_start();
 
-        // राइडर की जानकारी सेशन से प्राप्त करें
-        $rider_id = $_SESSION['rider_id'];
 
         // चुना गया महीना और साल
+        $rider = $_GET['rider'];
         $month = $_GET['month'];
         $year = $_GET['year'];
 
         // राइड्स डेटा प्राप्त करें
         $sql = "SELECT ride_id, sender_name, w_date, work_type, start_from, end_to, km 
                 FROM rides 
-                WHERE rider_id = ? AND MONTH(w_date) = ? AND YEAR(w_date) = ?";
+                WHERE rider_name = ? AND MONTH(w_date) = ? AND YEAR(w_date) = ?";
         $stmt = $conn->prepare($sql);
         $stmt->bind_param("iss", $rider_id, $month, $year);
         $stmt->execute();
