@@ -28,7 +28,7 @@ if (!isset($_SESSION['admin_id'])) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin Dashboard</title>
+    <title>Rider Jobs</title>
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/admin_dashboard.css">
     <link rel="icon" type="image/x-icon" href="../img/logo.png"> 
@@ -78,7 +78,7 @@ if (!isset($_SESSION['admin_id'])) {
                         <h2>View Monthly Rider Data</h2><br>
                             <form action="apps/admin_rides_by_month.php" method="GET">
                                 <label for="rider_id">Rider ID:</label>
-                                <input type="text" id="rider"><br><br>
+                                <input type="text" name="rider_id" id="rider_id"><br><br>
                                 <label for="month">Month:</label>
                                 <select id="month" name="month" required>
                                     <option value="">Select Month</option>
@@ -139,16 +139,16 @@ if($total != 0)
     <h2 align="center"><mark>Displaying All Records</mark></h2>
     <center>
     <table border="1" cellspacing="5" width="100%">
-        <tr>
-        <th width="5%">ID</th>
-        <th width="10%">Rider Name</th>
-        <th width="10%">Sender Name</th>
-        <th width="10%">Date</th>
-        <th width="15%">Work Type</th>
-        <th width="20%">From</th>
-        <th width="15%">To</th>
-        <th width="10%">Total KM</th>
-        <th width="15%">Operations</th>
+        <tr class="col-12">
+        <th>ID</th>
+        <th>Rider Name</th>
+        <th>Sender Name</th>
+        <th>Date</th>
+        <th>Work Type</th>
+        <th>From</th>
+        <th>To</th>
+        <th>Total KM</th>
+        <th>Operations</th>
         </tr>
     
     <?php
@@ -164,7 +164,7 @@ if($total != 0)
                 <td>".$result['end_to']."</td>
                 <td>".$result['km']."</td>
 
-                <td><a href='update_design.php?update_id=$result[id]'>Update</a></td>
+                <td style='background-color:black';><a href='update_design.php?update_id=$result[id]'>Update</a></td>
             </tr>
             ";
     }
