@@ -38,7 +38,7 @@ if (!isset($_SESSION['rider_id'])) {
 </head>
 <body>
     <!--header coding start-->
-    <div class="row">
+    <div class="row" class="col-12">
         <header class="col-12">
             <div>
                 <img src="../../../../img/logo.png" alt="logo" id="logo">
@@ -51,7 +51,7 @@ if (!isset($_SESSION['rider_id'])) {
     <!--header coding end-->
 
     <!--Navigation coding start-->
-    <div class="row">
+    <div class="row" class="col-12">
         <nav class="col-12">
             <ul>
                 <li class="col-6"><a href="../../user_1.php"><i class="fas fa-arrow-left"></i> Back</a></li>
@@ -87,16 +87,16 @@ if (!isset($_SESSION['rider_id'])) {
                     <h2 align="center"><mark>Displaying All Records</mark></h2>
                     <center>
                     <table border="1" cellspacing=".01" width="100%">
-                        <tr>
-                        <th width="5%" style="display:none;">ID</th>
-                        <th width="10%" style="display:none;">Rider Name</th>
-                        <th width="10%">Sender Name</th>
-                        <th width="10%">Date</th>
-                        <th width="15%">Work Type</th>
-                        <th width="15%">From</th>
-                        <th width="15%">To</th>
-                        <th width="10%">KM</th>
-                        <th width="10%">Update</th>
+                        <tr class="col-12">
+                        <th style="display:none;">ID</th>
+                        <th style="display:none;">Rider Name</th>
+                        <th>Sender Name</th>
+                        <th >Date</th>
+                        <th >Work Type</th>
+                        <th >From</th>
+                        <th >To</th>
+                        <th >KM</th>
+                        <th >Edit</th>
                         </tr>
                     <?php
                     while ($result = mysqli_fetch_assoc($rides)) 
@@ -110,7 +110,7 @@ if (!isset($_SESSION['rider_id'])) {
                                 <td>".$result['start_from']."</td>
                                 <td>".$result['end_to']."</td>
                                 <td>".$result['km']."</td>
-                                <td style='background: black;'><a href='../update_design.php?update_id=$result[ride_id]'>Update</a></td>
+                                <td style='background: black;'><a href='../update_design.php?update_id=$result[ride_id]'>Edit</a></td>
                             </tr>
                             ";
                     }
@@ -142,7 +142,6 @@ if (!isset($_SESSION['rider_id'])) {
         <div id="add_job" class="animate__animated animate__slideInDown">
             <h1>Add New Job</h1><br>
             <form id="add_work" action="../action.php" method="POST">
-            <!-- <form id="add_work" name="submit-to-google-sheet" method="POST"> -->
                 <input type="hidden" name="riderid" value="<?php echo $_SESSION['rider_id']; ?>">
                 <p id="add">Your Name</p>
                 <input type="text" name="rname" id="ridername" required="required" value="<?php echo $_SESSION['rider_name']; ?>"></input>
@@ -159,7 +158,6 @@ if (!isset($_SESSION['rider_id'])) {
                 <p id="add">Total K.M.</p>
                 <input type="number" name="km" placeholder="Total K.M." id="total_km" required="required">
                 <input type="submit"id="submit_btn" name="submit">
-                <!-- <button id="submit_btn" name="submit">Submit</button> -->
                 <button id="close_btn" name="close">Close</button><br>
                 <span id="success"></span>
             </form>
@@ -173,7 +171,6 @@ if (!isset($_SESSION['rider_id'])) {
     
 
 <script src="js/works.js"></script>
-<!-- <script type="module" src="js/addword.js"></script>      -->
 
 </body>
 </html>
