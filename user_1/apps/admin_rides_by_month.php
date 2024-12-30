@@ -39,14 +39,15 @@ if (!isset($_SESSION['admin_id'])) {
 
 </head>
 
-<!--header coding start-->
+<div id="displayfornonprint">
+    <!--header coding start-->
 <div class="row">
         <header class="col-12">
             <div>
                 <img src="../../img/logo.png" alt="logo" id="logo">
             </div>
             
-            <h2><center style="height: 50px; text-align: center; color: red;"><span id="profile_name"><?php echo "<h4>Welcome " . $_SESSION['admin_name'] . "!</h4>"; ?></span></center></h2>
+            <h2><center style="height: 50px; text-align: center; color: red;"><span id="profile_name"><?php echo $_SESSION['admin_name'] . "!</h4>"; ?></span></center></h2>
             
         </header>    
     </div>
@@ -63,6 +64,20 @@ if (!isset($_SESSION['admin_id'])) {
     </div>
     <!--Navigation coding end-->
 
+
+
+<button id="printbtn" onclick="window.print()"
+    style="font-family: 'Ubuntu', sans-serif; 
+                        font-size: 20px; 
+                        padding: 5px 10px; 
+                        margin-top: 15px; 
+                        color: white; 
+                        background-color: purple; 
+                        margin-bottom: 10px;">Print</button>
+
+</div>
+
+<div id="displayforprint">
 <section>
 <style>
         table
@@ -72,6 +87,158 @@ if (!isset($_SESSION['admin_id'])) {
     </style>
 
 <!-- Total KM factor  -->
+
+<?php
+
+
+// Get rider_id from URL parameter
+$rider_id = $_GET['rider_id'];
+
+// Fetch rider name from the database
+$sql = "SELECT rider_name FROM rider WHERE rider_id = ?";
+$stmt = $conn->prepare($sql);
+$stmt->bind_param("i", $rider_id);
+$stmt->execute();
+$result = $stmt->get_result();
+
+// Check if rider exists
+if ($result->num_rows > 0) {
+    $rider = $result->fetch_assoc();
+    $rider_name = $rider['rider_name'];
+}
+?>
+
+
+<?php
+    if ($_SERVER['REQUEST_METHOD'] == 'GET' && isset($_GET['rider_id']) && isset($_GET['month']) && isset($_GET['year'])) {
+        include '../../connection/connection.php';
+
+        // राइडर की जानकारी सेशन से प्राप्त करें
+        // $rider_id = $_GET['rider_id'];
+
+        // चुना गया महीना और साल
+        $rider_id = $_GET['rider_id'];
+        $month = $_GET['month'];
+        $year = $_GET['year'];
+        // SQL क्वेरी: कुल किलोमीटर प्राप्त करें
+        $sql = "SELECT SUM(km) AS total_km 
+                FROM rides 
+                WHERE rider_id = ? AND MONTH(w_date) = ? AND YEAR(w_date) = ?";
+        $stmt = $conn->prepare($sql);
+        $stmt->bind_param("iss", $rider_id, $month, $year);
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        if ($result->num_rows > 0) {
+            $row = $result->fetch_assoc();
+            $total_km = $row['total_km'] ? $row['total_km'] : 0; // अगर डेटा नहीं है, तो 0 दिखाएं
+            
+            // echo "<h3 align='center'><mark> Rider Name: $rider_name</mark></h3><hr><br>";
+            echo "<h3 align='center'><mark> Month Details: $month-$year</mark></h3><hr><br>";
+            echo "<h4>Total KM in this month is =<mark> $total_km KM</mark></h4>";
+        } else {
+            echo "<p>इस महीने की कोई राइड नहीं है।</p>";
+        }
+    }
+    ?>
+
+
+<!-- Total COnveyance per month -->
+
+
+<?php
+    if ($_SERVER['REQUEST_METHOD'] == 'GET' && isset($_GET['rider_id']) && isset($_GET['month']) && isset($_GET['year'])) {
+        include '../../connection/connection.php';
+
+        // राइडर की जानकारी सेशन से प्राप्त करें
+        // $rider_id = $_SESSION['rider_id'];
+
+        // चुना गया महीना और साल
+        $rider_id = $_GET['rider_id'];
+        $month = $_GET['month'];
+        $year = $_GET['year'];
+
+        // SQL क्वेरी: कुल किलोमीटर प्राप्त करें
+        $sql = "SELECT SUM(km) AS total_km 
+                FROM rides 
+                WHERE rider_id = ? AND MONTH(w_date) = ? AND YEAR(w_date) = ?";
+        $stmt = $conn->prepare($sql);
+        $stmt->bind_param("iss", $rider_id, $month, $year);
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        if ($result->num_rows > 0) {
+            $row = $result->fetch_assoc();
+            $total_km = $row['total_km'] ? $row['total_km'] : 0; // अगर डेटा नहीं है, तो 0 दिखाएं
+            $conveyance = $total_km * 2.5;
+            // echo "<h3>महीना: $month-$year</h3>";
+            echo "<h4>Total conveyance is = <mark>&#8377; $conveyance </mark</h4><br><br>";
+        } else {
+            echo "<p>इस महीने की कोई राइड नहीं है।</p>";
+        }
+    }
+    ?>
+
+<?php
+while ($row = $result-> fetch_assoc()){
+echo "{$row['rider_name']}";
+}
+?>
+
+
+<?php
+    if ($_SERVER['REQUEST_METHOD'] == 'GET' && isset($_GET['rider_id']) && isset($_GET['month']) && isset($_GET['year'])) {
+        // session_start();
+
+        // राइडर की जानकारी सेशन से प्राप्त करें
+        // $rider_id = $_SESSION['rider_id'];
+
+        
+
+        // चुना गया महीना और साल
+        $rider_id = $_GET['rider_id'];
+        $month = $_GET['month'];
+        $year = $_GET['year'];
+
+        // राइड्स डेटा प्राप्त करें
+        $sql = "SELECT ride_id, rider_name, sender_name, w_date, work_type, start_from, end_to, km 
+                FROM rides 
+                WHERE rider_id = ? AND MONTH(w_date) = ? AND YEAR(w_date) = ?";
+        $stmt = $conn->prepare($sql);
+        $stmt->bind_param("iss", $rider_id, $month, $year);
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        if ($result->num_rows > 0) {
+            echo "<table border='1' cellpadding='10' cellspacing='2' width='100%'>
+                    <tr>
+                        <th width='8%'>Rider Name</th>
+                        <th width='15%'>Sender Name</th>
+                        <th width='18%'>Work Date</th>
+                        <th width='18%'>Work Type</th>
+                        <th width='18%'>Start From</th>
+                        <th width='18%'>End To</th>
+                        <th width='5%'>KM.</th>
+                    </tr>";
+            while ($row = $result->fetch_assoc()) {
+                echo "<tr>
+                        <td>{$row['rider_name']}</td>
+                        <td>{$row['sender_name']}</td>
+                        <td>{$row['w_date']}</td>
+                        <td>{$row['work_type']}</td>
+                        <td>{$row['start_from']}</td>
+                        <td>{$row['end_to']}</td>
+                        <td>{$row['km']}</td>
+                      </tr>";
+            }
+            echo "</table>";
+        } else {
+            echo "<p>इस महीने की कोई राइड नहीं है।</p>";
+        }
+    }
+    ?>
+</div>
+
 
 </section>
 </html>
