@@ -1,5 +1,8 @@
 <?php
 include '../../connection/connection.php';
+// Fetch all riders
+$sql = "SELECT * FROM rider";
+$result = $conn->query($sql);
 ?>
 
 <?php
