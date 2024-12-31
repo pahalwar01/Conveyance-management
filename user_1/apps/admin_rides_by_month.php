@@ -212,9 +212,9 @@ echo "{$row['rider_name']}";
         if ($result->num_rows > 0) {
             echo "<table border='1' cellpadding='10' cellspacing='2' width='100%'>
                     <tr>
-                        <th width='8%'>Rider Name</th>
+                        <th width='16%'>Rider Name</th>
                         <th width='15%'>Sender Name</th>
-                        <th width='18%'>Work Date</th>
+                        <th width='10%'>Work Date</th>
                         <th width='18%'>Work Type</th>
                         <th width='18%'>Start From</th>
                         <th width='18%'>End To</th>
