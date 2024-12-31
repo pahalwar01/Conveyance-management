@@ -32,7 +32,7 @@ include 'codes/signin.php';
                     <small id="password_warning"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i> Wrong Password</small>
                     <button type="submit" id="login_btn">Login</button>
                 </form><br>
-                <p>Don't have an account? <span id="signup_link"><a href="user_signup.php">Sign Up</a></span><br><br></p>
+                <!-- <p>Don't have an account? <span id="signup_link"><a href="user_signup.php">Sign Up</a></span><br><br></p> -->
                 <a href="admin_login.php"><center><span id="#">Admin Panel</span></center></a>
             </div>
         </div>
