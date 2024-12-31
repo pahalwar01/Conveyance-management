@@ -38,14 +38,13 @@ if (!isset($_SESSION['rider_id'])) {
 
 
 </head>
-
+<div id="displayfornonprint">
 <!--header coding start-->
 <div class="row">
         <header class="col-12">
             <div>
                 <img src="../../img/logo.png" alt="logo" id="logo">
             </div>
-            
             <h2><center style="height: 50px; text-align: center; color: red;"><span id="profile_name"><?php echo $_SESSION['rider_name'] . "!</h4>"; ?></span></center></h2>
             
         </header>    
@@ -62,15 +61,18 @@ if (!isset($_SESSION['rider_id'])) {
         </nav>
     </div>
     <!--Navigation coding end-->
-    <!-- <button onclick="window.print()" 
+    <button onclick="window.print()" 
     style="font-family: 'Ubuntu', sans-serif; 
                         font-size: 20px; 
                         padding: 5px 10px; 
                         margin-top: 15px; 
                         color: white; 
                         background-color: purple; 
-                        margin-bottom: 10px;">Print</button> -->
+                        margin-bottom: 10px;">Print</button>
+</div>
 
+<div id="displayforprint">
+    
 <section>
 <style>
         table
@@ -163,7 +165,7 @@ if (!isset($_SESSION['rider_id'])) {
         $year = $_GET['year'];
 
         // राइड्स डेटा प्राप्त करें
-        $sql = "SELECT ride_id, sender_name, w_date, work_type, start_from, end_to, km 
+        $sql = "SELECT rider_name, sender_name, w_date, work_type, start_from, end_to, km 
                 FROM rides 
                 WHERE rider_id = ? AND MONTH(w_date) = ? AND YEAR(w_date) = ?";
         $stmt = $conn->prepare($sql);
@@ -175,9 +177,9 @@ if (!isset($_SESSION['rider_id'])) {
             echo "<h3 align='center'>Your Rides DATA For <mark>($month-$year)</mark</h3>";
             echo "<table border='1' cellpadding='10' cellspacing='2' width='100%'>
                     <tr>
-                        <th width='5%'>Ride ID</th>
-                        <th width='18%'>Sender Name</th>
-                        <th width='18%'>Work Date</th>
+                        <th width='16%'>Rider Name</th>
+                        <th width='15%'>Sender Name</th>
+                        <th width='10%'>Work Date</th>
                         <th width='18%'>Work Type</th>
                         <th width='18%'>Start From</th>
                         <th width='18%'>End To</th>
@@ -185,7 +187,7 @@ if (!isset($_SESSION['rider_id'])) {
                     </tr>";
             while ($row = $result->fetch_assoc()) {
                 echo "<tr>
-                        <td>{$row['ride_id']}</td>
+                        <td>{$row['rider_name']}</td>
                         <td>{$row['sender_name']}</td>
                         <td>{$row['w_date']}</td>
                         <td>{$row['work_type']}</td>
@@ -200,6 +202,6 @@ if (!isset($_SESSION['rider_id'])) {
         }
     }
     ?>
-
+</div>
 </section>
 </html>
