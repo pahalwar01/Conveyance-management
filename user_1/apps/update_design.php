@@ -87,7 +87,7 @@ if(isset($_POST['update']))
     <div class="row">
         <nav class="col-12">
             <ul>
-                <li class="col-6"><a href="../../user_1.php"><i class="fas fa-arrow-left"></i> Back</a></li>
+                <li class="col-6"><a href="../user_1.php"><i class="fas fa-arrow-left"></i> Back</a></li>
                 <li class="col-6"><a href="#"><i class="fas fa-list"></i> Jobs View</a></li>
             </ul>
             
