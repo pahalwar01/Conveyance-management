@@ -28,7 +28,7 @@ if (!isset($_SESSION['admin_id'])) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Rider Jobs</title>
+    <title>Print Rides</title>
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/admin_dashboard.css">
     <link rel="icon" type="image/x-icon" href="../img/logo.png"> 
@@ -58,10 +58,11 @@ if (!isset($_SESSION['admin_id'])) {
     <div class="row">
         <nav class="col-12">
             <ul>
-                <li class="col-4"><a href="admin_dashboard.php"><i class="fas fa-home"></i> Home</a></li>
-                <li class="col-4" id="jobview"><a href="admin_jobview.php"><i class="fas fa-list"></i> Jobs View</a></li>
-                <li class="col-4" id="logout"><a href="#"><p id="logout_text"><i class="fa-solid fa-right-from-bracket"></i> <?php echo '<a href="logout.php">Logout</a>'; ?> </p></a></li>
-            </ul>        
+                <li class="col-3"><a href="admin_dashboard.php"><i class="fas fa-home"></i> Home</a></li>
+                <li class="col-3" id="jobview"><a href="admin_jobview.php"><i class="fa-solid fa-print"></i> Print</a></li>
+                <li class="col-3" id="jobview"><a href="apps/admin_delete_rides.php"><i class="fa-solid fa-trash"></i> Delete</a></li>
+                <li class="col-3" id="logout"><a href="#"><p id="logout_text"><i class="fa-solid fa-right-from-bracket"></i> <?php echo '<a href="logout.php">Logout</a>'; ?> </p></a></li>
+            </ul>       
         </nav>
     </div>
     <!--Navigation coding end-->
