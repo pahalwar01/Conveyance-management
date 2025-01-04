@@ -164,7 +164,7 @@ if($total != 0)
                 <td>".$result['end_to']."</td>
                 <td>".$result['km']."</td>
 
-                <td style='background-color:black';><a href='update_design.php?update_id=$result[id]'>Update</a></td>
+                <td style='background-color:black';><a href='apps/admin_update_design.php?update_id=$result[ride_id]'>Update</a></td>
             </tr>
             ";
     }
