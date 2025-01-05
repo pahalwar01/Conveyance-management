@@ -77,7 +77,7 @@ if (!isset($_SESSION['admin_id'])) {
 
                     <div>
                         <h2>View Monthly Rider Data</h2><br>
-                            <form action="apps/admin_rides_by_month.php" method="GET">
+                            <form action="delete_rides_list.php" method="GET">
                                 <label for="rider_id">Rider ID:</label>
                                 <input type="text" name="rider_id" id="rider_id"><br><br>
                                 <label for="month">Month:</label>
