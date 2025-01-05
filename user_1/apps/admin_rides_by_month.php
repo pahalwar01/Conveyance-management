@@ -134,7 +134,7 @@ if ($result->num_rows > 0) {
             $total_km = $row['total_km'] ? $row['total_km'] : 0; // अगर डेटा नहीं है, तो 0 दिखाएं
             
             // echo "<h3 align='center'><mark> Rider Name: $rider_name</mark></h3><hr><br>";
-            echo "<h3 align='center'><mark> Month Details: $month-$year</mark></h3><hr><br>";
+            echo "<h3 align='center'><mark>$rider_name's Details for Month:- $month Year:- $year </mark></h3><hr><br>";
             echo "<h4>Total KM in this month is =<mark> $total_km KM</mark></h4>";
         } else {
             echo "<p>इस महीने की कोई राइड नहीं है।</p>";
