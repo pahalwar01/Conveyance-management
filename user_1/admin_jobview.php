@@ -71,8 +71,6 @@ if (!isset($_SESSION['admin_id'])) {
 <div class="row">
             <center>
                 <div id="rider">
-                    <h2 align ="center" style="height: 50px; text-align: center; color: red;">Your Ride Details <span id="riderdetails"></span></h2>
-                    <br>
                     <!-- users view panel -->
 
                     <div>
