@@ -73,7 +73,7 @@ if (!isset($_SESSION['rider_id'])) {
             
             <?php
 
-                $display =  "SELECT * FROM rides WHERE rider_name = '$user'";
+                $display =  "SELECT * FROM rides WHERE rider_name = '$user' ORDER BY w_date DESC";
                 $rides = mysqli_query($conn, $display);
 
                 $total = mysqli_num_rows($rides);
