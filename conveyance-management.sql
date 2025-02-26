@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 22, 2024 at 11:04 AM
+-- Generation Time: Feb 26, 2025 at 07:29 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -24,6 +24,27 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `admin`
+--
+
+CREATE TABLE `admin` (
+  `admin_id` int(11) NOT NULL,
+  `admin_name` text NOT NULL,
+  `admin_email` text NOT NULL,
+  `admin_phone` text NOT NULL,
+  `admin_password` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `admin`
+--
+
+INSERT INTO `admin` (`admin_id`, `admin_name`, `admin_email`, `admin_phone`, `admin_password`) VALUES
+(1, 'Rohit Kumar', 'admin@rohit.com', '7503629170', '$2y$10$QV.s9cimopfTmhgYgDhsLOnDeMNM2ny3KFh2WRNZs3dcevqqyDmX.');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `rider`
 --
 
@@ -40,10 +61,10 @@ CREATE TABLE `rider` (
 --
 
 INSERT INTO `rider` (`rider_id`, `rider_name`, `email`, `phone`, `password`) VALUES
-(1, 'Rohit', 'admin@rohit.com', '7503629170', '$2y$10$xQRroNqREv4ws62HGHxvUeeYOpAwGqllAE1bv9.mIinnzXmof1WjG'),
-(12, 'Dharampal', 'dharampal@rohit.com', '9555424849', '$2y$10$lUwrkB65GxArUseYlrEv1O2ERRNQzlMDi8sbaOGVnW5Do9Bo.wVBy'),
-(13, 'Karan Kumar', 'karan@rohit.com', '9873333660', '$2y$10$oGx/7BTFtcVFQgVmN9wjwOMfzYAPjkWeVQKkgVVdrTI867CupB1Y2'),
-(14, 'Lalit Kumar', 'lalit@rohit.com', '9999618106', '$2y$10$lXLdByVKgw3AmBvEupCOReBvF4iGrJI0AF7ufY9wnxaVZwI/VVMIa');
+(1, 'Rohit kumar', 'admin@rohit.com', '7503629170', '$2y$10$6hKKIgn7Tk5UQoBHWQyyge9qLckKx7y0p4s7fjmogb8SNkw308OLu'),
+(2, 'Dharampal', 'dharampal@rohit.com', '9555424849', '$2y$10$oN9cUqQs7mcJs5NUKz8vPe98PjVbrv0lQq15.7pdZpuSJb/lrSRXG'),
+(3, 'Lalit Kumar', 'lalit@rohit.com', '9999618106', '$2y$10$7MsBZxbFr1fLUd7GnJWp0./qdaoPbZO3WN/TLMt5qwQaeWFqwAQw.'),
+(4, 'Karan Kumar', 'karan@rohit.com', '9873333660', '$2y$10$NUMWon265YivVZ4vfch/MebuUXAiCsvDr/eE/L.veB0Y17gascPpi');
 
 -- --------------------------------------------------------
 
@@ -68,16 +89,19 @@ CREATE TABLE `rides` (
 --
 
 INSERT INTO `rides` (`ride_id`, `rider_id`, `rider_name`, `sender_name`, `w_date`, `work_type`, `start_from`, `end_to`, `km`) VALUES
-(14, 0, 'Lalit Kumar', 'Naushad Alam', '2024-12-06', 'official', 'Noida', 'Noida sector 101', 331),
-(15, 0, 'Lalit Kumar', 'Naushad Alam', '2024-12-09', 'official', 'Noida', 'Noida sector 101', 331),
-(16, 0, 'Lalit Kumar', 'Naushad Alam', '2024-12-01', 'official', 'Noida', 'Noida sector 101', 331),
-(17, 14, 'Lalit Kumar', 'Rohit Kumar', '2024-12-13', 'official', 'Noida', 'Delhi', 123),
-(18, 14, 'Lalit Kumar', 'Rohit Kumar', '2024-12-20', 'official', 'Noida', 'Delhi', 111),
-(19, 13, 'Karan Kumar', 'Rohit Kumar', '2024-12-22', 'official', 'Noida', 'Gurgaon', 120);
+(4, 1, 'Rohit kumar', 'Naresh Dhawan', '2025-01-02', 'cheque pickup', 'Noida Sector 45', 'Faridabad', 111),
+(5, 6, 'Dharampal', 'Ajay', '2024-12-29', 'laptop', 'Noida Sector 45', 'Faridabad', 88),
+(10, 1, 'Rohit kumar', 'Ajay', '2025-02-01', 'Oggifbkhjbdf', 'Noida Sector 41', 'Faridabad', 321);
 
 --
 -- Indexes for dumped tables
 --
+
+--
+-- Indexes for table `admin`
+--
+ALTER TABLE `admin`
+  ADD PRIMARY KEY (`admin_id`);
 
 --
 -- Indexes for table `rider`
@@ -96,16 +120,22 @@ ALTER TABLE `rides`
 --
 
 --
+-- AUTO_INCREMENT for table `admin`
+--
+ALTER TABLE `admin`
+  MODIFY `admin_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
 -- AUTO_INCREMENT for table `rider`
 --
 ALTER TABLE `rider`
-  MODIFY `rider_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `rider_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `rides`
 --
 ALTER TABLE `rides`
-  MODIFY `ride_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `ride_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
