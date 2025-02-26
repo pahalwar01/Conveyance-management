@@ -75,7 +75,7 @@ if (!isset($_SESSION['admin_id'])) {
 
     <!-- Add Rider Button -->
      <center>
-    <button id="add_rider_btn"><a href="add_rider.php" style="color: green; text-decoration: none;">Add New Rider Manually</a></button>
+    <button id="add_rider_btn"><a href="/user_1/apps/add_rider.php" style="color: green; text-decoration: none;">Add New Rider</a></button>
     <br><br></center>
 
     <!-- Riders Table -->
