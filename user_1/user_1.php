@@ -79,9 +79,6 @@ if (!isset($_SESSION['rider_id'])) {
                 <div id="rider">
                     <!-- users view panel -->
 
-                    <div style="float: left;">
-                        <h5>Download <img src="../img/android.png" alt="Android" style="width: 20px; height: 20px;"></h5>
-                    </div><br><br><br><br><br>
                         <h2>View monthly rides data</h2><br>
                             <form action="apps/rides_by_month.php" method="GET">
                                 <label for="month">Month:</label>
