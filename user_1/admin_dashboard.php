@@ -102,6 +102,13 @@ if (!isset($_SESSION['admin_id'])) {
         <?php } ?>
     </table>
     </center>
+    <br><br><br>
+
+    <hr>
+
+
+    <hr>
+
     <div>
         <!DOCTYPE html>
             <html>
@@ -113,8 +120,8 @@ if (!isset($_SESSION['admin_id'])) {
                 #map { height: 250px; width: 100%; }
             </style>
             </head>
-            <body>
-            <h2>Riders Live Tracking</h2>
+            <body><br>
+            <h2>Riders Live Tracking</h2><br>
             <div id="map"></div>
             <script>
                 const map = L.map('map').setView([20.5937, 78.9629], 5);
@@ -135,7 +142,8 @@ if (!isset($_SESSION['admin_id'])) {
                 setInterval(fetchRiders, 5000);
                 fetchRiders();
             </script>
-            </body>
+
+           </body>
             </html>
 
     </div>
