@@ -102,5 +102,42 @@ if (!isset($_SESSION['admin_id'])) {
         <?php } ?>
     </table>
     </center>
+    <div>
+        <!DOCTYPE html>
+            <html>
+            <head>
+            <title>Live Rider Tracking</title>
+            <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css"/>
+            <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+            <style>
+                #map { height: 250px; width: 100%; }
+            </style>
+            </head>
+            <body>
+            <h2>Riders Live Tracking</h2>
+            <div id="map"></div>
+            <script>
+                const map = L.map('map').setView([20.5937, 78.9629], 5);
+                L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{maxZoom:19}).addTo(map);
+                const markers = {};
+
+                async function fetchRiders(){
+                const res = await fetch("get_all_riders.php");
+                const data = await res.json();
+                data.forEach(r => {
+                    if(markers[r.rider_id]){
+                    markers[r.rider_id].setLatLng([r.lat, r.lng]);
+                    } else {
+                    markers[r.rider_id] = L.marker([r.lat, r.lng]).addTo(map).bindPopup(r.rider_id);
+                    }
+                });
+                }
+                setInterval(fetchRiders, 5000);
+                fetchRiders();
+            </script>
+            </body>
+            </html>
+
+    </div>
 </body>
 </html>
