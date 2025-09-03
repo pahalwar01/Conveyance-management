@@ -72,6 +72,11 @@ if (!isset($_SESSION['rider_id'])) {
     </div>
     <!--Navigation coding end-->
 
+
+    <!--main section coding start-->
+
+
+
     <section>
 
         <div class="row">
