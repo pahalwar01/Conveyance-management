@@ -147,5 +147,6 @@ if (!isset($_SESSION['admin_id'])) {
             </html>
 
     </div>
+    <br><hr><hr>
 </body>
 </html>
