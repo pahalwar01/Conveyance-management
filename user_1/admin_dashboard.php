@@ -86,6 +86,7 @@ if (!isset($_SESSION['admin_id'])) {
             <th width="20%">Rider Name</th>
             <th width="40%">Rider Email</th>
             <th width="25%">Rider Phone</th>
+            <th width="25%">Duty Status</th>
             <!-- <th width="10%">Update</th> -->
         </tr>
         <?php while ($row = $result->fetch_assoc()) { ?>
@@ -93,6 +94,7 @@ if (!isset($_SESSION['admin_id'])) {
                 <td><?php echo $row['rider_id']; ?></td>
                 <td><?php echo $row['rider_name']; ?></td>
                 <td><?php echo $row['email']; ?></td>
+                <td><?php echo $row['phone']; ?></td>
                 <td><?php echo $row['phone']; ?></td>
                 <!-- <td>
                     <a href="edit_rider.php?rider_id=<?php echo $row['rider_id']; ?>">Edit</a> | 
