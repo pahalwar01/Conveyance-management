@@ -126,7 +126,7 @@ if (!isset($_SESSION['admin_id'])) {
             <h2>Riders Live Tracking</h2><br>
             <div id="map"></div>
             <script>
-                const map = L.map('map').setView([20.5937, 78.9629], 5);
+                const map = L.map('map').setView([28.56662749313307, 77.3180577243958], 5);
                 L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{maxZoom:19}).addTo(map);
                 const markers = {};
 
